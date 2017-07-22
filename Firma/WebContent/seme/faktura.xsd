@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified"
+    targetNamespace="http://ftn.uns.ac.rs/faktura" xmlns:fak="http://ftn.uns.ac.rs/faktura"
+    xmlns:tip="http://ftn.uns.ac.rs/tipovi">
+    <xs:import namespace="http://ftn.uns.ac.rs/tipovi" schemaLocation="tipovi.xsd"/>
+    <xs:complexType name="faktura">
+        <xs:sequence>
+            <xs:element ref="fak:zaglavljeFakture"/>
+            <xs:element ref="fak:zaglavljeFakture"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="zaglavljeFakture">
+        <xs:sequence>
+            <xs:element name="idPoruke">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="50"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="nazivDobavljac" type="tip:tipString255"/>
+            <xs:element name="adresaDobavljac" type="tip:tipString255"/>
+            <xs:element name="pibDobavljac" type="tip:tipPIB"/>
+            <xs:element name="nazivKupac">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="55"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="adresaKupac">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="55"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="pibKupac" type="tip:tipPIB"/>
+            <xs:element name="brojRacuna">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:totalDigits value="6"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="datumRacuna" type="xs:date"/>
+            <xs:element name="vrednostRobe" type="tip:tipDec15_2"/>
+            <xs:element name="vrednostUsluga" type="tip:tipDec15_2"/>
+            <xs:element name="ukupnoRobaIUsluge" type="tip:tipDec15_2"/>
+            <xs:element name="ukupanRabat" type="tip:tipDec15_2"/>
+            <xs:element name="ukupanPorez" type="tip:tipDec15_2"/>
+            <xs:element name="valuta">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:length value="3"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iznosZaUplatu" type="tip:tipDec15_2"/>
+            <xs:element name="uplataNaRacun" type="tip:tipRacun"/>
+            <xs:element name="datumValute" type="xs:date"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="stavkaFakture">
+        <xs:sequence>
+            <xs:element name="redniBr">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:minInclusive value="1"/>
+                        <xs:maxInclusive value="3"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="nazivRobeIliUsluge">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="120"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="kolicina" type="tip:tipDec10_2"/>
+            <xs:element name="jedinicaMere">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:minLength value="1"/>
+                        <xs:maxLength value="6"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="jedinicnaCena" type="tip:tipDec10_2"/>
+            <xs:element name="vrednost" type="tip:tipDec12_2"/>
+            <xs:element name="procenatRabata">
+                <xs:simpleType>
+                    <xs:restriction base="xs:decimal">
+                        <xs:totalDigits value="5"/>
+                        <xs:fractionDigits value="2"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:element>
+            <xs:element name="iznosRabata" type="tip:tipDec12_2"/>
+            <xs:element name="umanjenoZaRabat" type="tip:tipDec12_2"/>
+            <xs:element name="ukupanPorez" type="tip:tipDec12_2"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="zaglavljeFakture" type="fak:zaglavljeFakture"/>
+    <xs:element name="stavkaFakture" type="fak:stavkaFakture"/>
+</xs:schema>
