@@ -1,0 +1,16 @@
+DatabaseClient client =
+			  DatabaseClientFactory.newClient("localhost", 8003,
+			                                  "admin", "admin",
+			                                  Authentication.DIGEST);
+
+	XMLDocumentManager docMgr = client.newXMLDocumentManager();
+	
+	
+	
+	StringHandle handleRead = new StringHandle();
+	docMgr.read("/content/xml/zavrsni_rad.xml", handleRead);
+	
+	System.out.println("ispis " + handleRead.get());
+	
+	
+	client.release();
