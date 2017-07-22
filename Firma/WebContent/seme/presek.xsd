@@ -4,7 +4,7 @@
     xmlns:tip="http://ftn.uns.ac.rs/tipovi">
 
     <xs:import namespace="http://ftn.uns.ac.rs/tipovi"
-        schemaLocation="file:/C:/Users/NINAM/Desktop/Faklutet/IV_godina/Drugi%20semestar/XML/NasProjekat/Firma/src/main/resources/tipovi.xsd"/>
+        schemaLocation="tipovi.xsd"/>
     
     <xs:complexType name="presek">
         <xs:sequence>
