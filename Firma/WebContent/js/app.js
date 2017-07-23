@@ -1,26 +1,36 @@
-var app = angular.module('app', []);
-app.controller('ctrl', ['$scope','$http','service',function ($scope, $http, service) {
-	
+'use strict'
+var app=angular.module('app',['ui.router','ngMaterial']);
 
-	$scope.send=function(){
-		console.log('usao u ctrl send')
-	service.send($scope.name)
-	}
-	
-}]);
+app.config(function($stateProvider, $urlRouterProvider) {
 
-app.service('service',['$http', function($http){
-		
-	 
-	 
-	 
-	 this.send=function(name){
-			console.log('usao u service send ' + name);
-			
-			
-			}	 
-	  
-}]);
+$urlRouterProvider.otherwise('/login');
+
+
+$stateProvider.state('login', {
+	url : '/login',
+		templateUrl : 'stranice/login.html',	
+		controller : 'loginCtrl'
+	})
+$stateProvider.state('pocetna', {
+	url : '/pocetna',
+		templateUrl : 'stranice/pocetna.html',	
+		controller : 'loginCtrl'
+	})
+	
+$stateProvider.state('nalogZaPrenos', {
+	url : '/nalogZaPrenos',
+		templateUrl : 'stranice/nalogZaPrenos.html',	
+		controller : 'loginCtrl'
+	})
+$stateProvider.state('zahtevIzvod', {
+	url : '/zahtevIzvod',
+		templateUrl : 'stranice/zahtevIzvod.html',	
+		controller : 'loginCtrl'
+	})
+});
+
+
+
 
 
 
