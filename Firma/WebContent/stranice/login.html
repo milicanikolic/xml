@@ -1,0 +1,20 @@
+<div class="container" ng-controller='loginCtrl'>
+	<div class="col-xs-5 col-xs-offset-4">
+		<div class="well siviWell">
+			<table class="table" style=" margin: 0 auto; margin-top:30px;">
+				<tr>
+					<td>Korisnicko ime:</td>
+					<td><input type="text" class="form-control" name="kIme" ng-model="korisnickoIme" /></td>
+				</tr>
+				
+				<tr>
+					<td>Sifra:</td>
+					<td><input type="password" class="form-control" name="sifra" ng-model="sifra"/></td>
+				</tr>
+			</table>
+			&nbsp;
+			&nbsp;
+			<a href="" class="btn btn-success pull-right zutoDugme" ng-click="loginSubmit()">Uloguj se</a>
+		</div>
+	</div>
+</div>
