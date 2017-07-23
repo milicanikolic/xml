@@ -8,17 +8,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
-public class Banka implements Serializable{
+public class Banka implements Serializable {
 
 	/**
-	 * 
-	 */
+	* 
+	*/
 	private static final long serialVersionUID = 1L;
 
 	private String naziv;
 	private String sifra;
 	private String swiftCode;
-	
+
 	public Banka() {
 		super();
 	}
@@ -54,7 +54,4 @@ public class Banka implements Serializable{
 		this.swiftCode = swiftCode;
 	}
 
-	
-	
-	
 }
