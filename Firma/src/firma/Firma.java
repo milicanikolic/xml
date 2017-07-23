@@ -1,10 +1,12 @@
-package model;
+package firma;
 
 import java.io.Serializable;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import model.Banka;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
@@ -15,6 +17,8 @@ public class Firma implements Serializable {
 	*/
 	private static final long serialVersionUID = 1L;
 
+	private String username;
+	private String password;
 	private String naziv;
 	private String adresa;
 	private String PIB;
@@ -24,12 +28,32 @@ public class Firma implements Serializable {
 		super();
 	}
 
-	public Firma(String naziv, String adresa, String pIB, Banka banka) {
+	public Firma(String username, String password, String naziv, String adresa, String pIB, Banka banka) {
 		super();
+		this.username=username;
+		this.password=password;
 		this.naziv = naziv;
 		this.adresa = adresa;
 		PIB = pIB;
 		this.banka = banka;
+	}
+
+	
+	
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	public String getNaziv() {

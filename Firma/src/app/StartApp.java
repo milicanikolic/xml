@@ -21,18 +21,20 @@ import com.marklogic.client.DatabaseClientFactory;
 import com.marklogic.client.DatabaseClientFactory.Authentication;
 import com.marklogic.client.document.XMLDocumentManager;
 import com.marklogic.client.io.InputStreamHandle;
-import com.marklogic.client.io.JAXBHandle;
 
+import firma.Firma;
+import firma.Firme;
 import model.Banka;
-import model.Firma;
-import model.Firme;
 
 @Startup
 @Singleton
 public class StartApp {
 	
-	private JAXBContext context;
-	Marshaller marshaller;
+	private static DatabaseClient client;
+	private static JAXBContext context;
+	private Marshaller marshaller;
+	
+	
 	
 	public StartApp() {
 		
@@ -68,8 +70,8 @@ public class StartApp {
 
         String fileName="firma.xml";
         Firme firme=new Firme();
-        firme.dodajFirmu(new Firma("Firma1", "Novosadskog Sajma 10", "12345", new Banka("Agricole", "123", "500")));
-        firme.dodajFirmu(new Firma("Firma2", "Bulevar Oslobodjenja 55", "56789", new Banka("Generali", "456", "345")));
+        firme.dodajFirmu(new Firma("firmaA", "firmaA", "Firma A", "Novosadskog Sajma 10", "12345", new Banka("Agricole", "123", "500")));
+        firme.dodajFirmu(new Firma("firmaB", "firmaB", "Firma B", "Bulevar Oslobodjenja 55", "56789", new Banka("Generali", "456", "345")));
        
        try {
 		this.context=JAXBContext.newInstance(Firme.class);
@@ -81,10 +83,7 @@ public class StartApp {
 	}
 
 
-        DatabaseClient client =
-        DatabaseClientFactory.newClient("localhost", 8003,
-                                        "admin", "admin",
-                                        Authentication.DIGEST);
+        otvoriKonekciju();
 
         XMLDocumentManager docMgr = client.newXMLDocumentManager();
      	String fileRead=System.getProperty("jboss.server.data.dir") + "\\" + fileName;
@@ -99,21 +98,52 @@ public class StartApp {
      		e.printStackTrace();
      	}
      	
-     	
-     	
-     	JAXBHandle<?> jaxHandle=new JAXBHandle<>(context);
-     	docMgr.read("/content/firma.xml", jaxHandle);
-     	Firme firmeBaza=(Firme) jaxHandle.get();
-     	System.out.println("***********************************");
-     	for(Firma f:firmeBaza.getFirme()) {
-     	System.out.println("iz bazeee "+f.getNaziv()+" "+f.getBanka().getNaziv());
-     	
-     
-     	}
-     	
-     	client.release();
+     	zatvoriKonekciju();
 
 
        
 	}
+	
+	
+	public static void otvoriKonekciju() {
+		client = DatabaseClientFactory.newClient("localhost", 8003,
+		                                        "admin", "admin",
+		                                        Authentication.DIGEST);
+		
+	}
+	
+	public static void zatvoriKonekciju() {
+		client.release();
+	}
+
+	public static DatabaseClient getClient() {
+		return client;
+	}
+
+	public static void setClient(DatabaseClient client) {
+		StartApp.client = client;
+	}
+
+	
+
+	public static JAXBContext getContext() {
+		return context;
+	}
+
+	public static void setContext(JAXBContext context) {
+		StartApp.context = context;
+	}
+
+	public Marshaller getMarshaller() {
+		return marshaller;
+	}
+
+	public void setMarshaller(Marshaller marshaller) {
+		this.marshaller = marshaller;
+	}
+	
+	
+	
+	
+	
 }
