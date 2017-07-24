@@ -1,11 +1,14 @@
 package firma;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import faktura.StavkaFakture;
 import model.Banka;
 
 @XmlRootElement
@@ -23,19 +26,22 @@ public class Firma implements Serializable {
 	private String adresa;
 	private String PIB;
 	private Banka banka;
+	private List<StavkaFakture> stavke;
 
 	public Firma() {
 		super();
+		stavke=new ArrayList<StavkaFakture>();
 	}
 
-	public Firma(String username, String password, String naziv, String adresa, String pIB, Banka banka) {
+	public Firma(String username, String password, String naziv, String adresa, String pIB, Banka banka, List<StavkaFakture> stavke) {
 		super();
 		this.username=username;
 		this.password=password;
 		this.naziv = naziv;
 		this.adresa = adresa;
-		PIB = pIB;
+		this.PIB = pIB;
 		this.banka = banka;
+		this.stavke=stavke;
 	}
 
 	
@@ -88,4 +94,15 @@ public class Firma implements Serializable {
 		this.banka = banka;
 	}
 
+	public List<StavkaFakture> getStavke() {
+		return stavke;
+	}
+
+	public void setStavke(List<StavkaFakture> stavke) {
+		this.stavke = stavke;
+	}
+	
+	public void dodajStavku(StavkaFakture stavkaFakture) {
+		stavke.add(stavkaFakture);
+	}
 }

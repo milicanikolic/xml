@@ -580,4 +580,8 @@ public class ZaglavljeFakture {
         this.datumValute = value;
     }
 
+	public ZaglavljeFakture() {
+		super();
+	}
+
 }

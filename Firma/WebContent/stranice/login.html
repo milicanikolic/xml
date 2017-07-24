@@ -1,15 +1,17 @@
 <div class="container" ng-controller='loginCtrl'>
 	<div class="col-xs-5 col-xs-offset-4">
 		<div class="well siviWell">
+		
+		<a  href=""  class="btn btn-success pull-right zutoDugme" ng-click="popuniLogin()">Popuni</a>
 			<table class="table" style=" margin: 0 auto; margin-top:30px;">
 				<tr>
 					<td>Korisnicko ime:</td>
-					<td><input type="text" class="form-control" name="kIme" ng-model="korisnickoIme" /></td>
+					<td><input type="text" class="form-control" name="kIme" id="loginIme" ng-model="korisnickoIme" /></td>
 				</tr>
 				
 				<tr>
 					<td>Sifra:</td>
-					<td><input type="password" class="form-control" name="sifra" ng-model="sifra"/></td>
+					<td><input type="password" class="form-control" name="sifra" id="loginSifra"  ng-model="sifra"/></td>
 				</tr>
 			</table>
 			&nbsp;

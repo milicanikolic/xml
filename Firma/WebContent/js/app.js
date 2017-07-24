@@ -1,5 +1,5 @@
 'use strict'
-var app=angular.module('app',['ui.router','ngMaterial']);
+var app=angular.module('app',['ui.router','ngMaterial', 'nya.bootstrap.select']);
 
 app.config(function($stateProvider, $urlRouterProvider) {
 
@@ -26,6 +26,18 @@ $stateProvider.state('zahtevIzvod', {
 	url : '/zahtevIzvod',
 		templateUrl : 'stranice/zahtevIzvod.html',	
 		controller : 'loginCtrl'
+	})
+	
+$stateProvider.state('naruciStavke', {
+	url : '/naruciStavke',
+		templateUrl : 'stranice/naruciStavke.html',	
+		controller : 'fakturaCtrl'
+	})
+	
+$stateProvider.state('kreirajStavku', {
+	url : '/kreirajStavku',
+		templateUrl : 'stranice/kreirajStavku.html',	
+		controller : 'fakturaCtrl'
 	})
 });
 

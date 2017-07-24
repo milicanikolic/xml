@@ -347,4 +347,24 @@ public class StavkaFakture {
         this.ukupanPorez = value;
     }
 
+	public StavkaFakture(BigDecimal redniBr, String nazivRobeIliUsluge, BigDecimal kolicina, String jedinicaMere,
+			BigDecimal jedinicnaCena, BigDecimal vrednost, BigDecimal procenatRabata, BigDecimal iznosRabata,
+			BigDecimal umanjenoZaRabat, BigDecimal ukupanPorez) {
+		super();
+		this.redniBr = redniBr;
+		this.nazivRobeIliUsluge = nazivRobeIliUsluge;
+		this.kolicina = kolicina;
+		this.jedinicaMere = jedinicaMere;
+		this.jedinicnaCena = jedinicnaCena;
+		this.vrednost = vrednost;
+		this.procenatRabata = procenatRabata;
+		this.iznosRabata = iznosRabata;
+		this.umanjenoZaRabat = umanjenoZaRabat;
+		this.ukupanPorez = ukupanPorez;
+	}
+
+	public StavkaFakture() {
+		super();
+	}
+     
 }
