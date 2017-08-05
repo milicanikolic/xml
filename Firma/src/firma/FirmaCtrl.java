@@ -2,6 +2,7 @@ package firma;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.ejb.LocalBean;
@@ -13,11 +14,16 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 import com.marklogic.client.document.XMLDocumentManager;
 import com.marklogic.client.io.JAXBHandle;
 
 import app.StartApp;
+import banka.Banka;
+import banka.Banke;
 import faktura.Faktura;
 import faktura.StavkaFakture;
 import faktura.ZaglavljeFakture;
@@ -35,7 +41,7 @@ public class FirmaCtrl {
 	@Path("/{username}/{password}")
 	public Firma login(@PathParam("username") String username, @PathParam("password") String password) {
 
-		JAXBHandle<?> jaxHandle = new JAXBHandle<>(StartApp.getContext());
+		JAXBHandle<?> jaxHandle = new JAXBHandle<>(StartApp.getContextFirma());
 
 		StartApp.otvoriKonekciju();
 
@@ -63,114 +69,153 @@ public class FirmaCtrl {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Firma> uzmiPreostaleFirme(Firma bezFirme) {
-
-		JAXBHandle<?> jaxHandle = new JAXBHandle<>(StartApp.getContext());
-		System.out.println("SADA IMAM " + bezFirme.getNaziv());
-		/*
-		 * StartApp.otvoriKonekciju();
-		 * 
-		 * XMLDocumentManager
-		 * docMgr=StartApp.getClient().newXMLDocumentManager();
-		 * 
-		 * docMgr.read("/content/firma.xml", jaxHandle); Firme firmeBaza=(Firme)
-		 * jaxHandle.get();
-		 * 
-		 * StartApp.zatvoriKonekciju();
-		 * 
-		 */
-
 		List<Firma> listaFirmi = new ArrayList<Firma>();
 		for (Firma firma : firmeBaza.getFirme()) {
-			System.out.println("IZ BAZE "+ firma.getNaziv());
 			if (!((firma.getUsername()).equals(bezFirme.getUsername()))) {
-				listaFirmi.add(firma);
-				System.out.println("DODAOOO " +firma.getNaziv());
+				listaFirmi.add(firma);				
 			}
 		}
 
 		return listaFirmi;
+	}
+
+	@POST
+	@Path("/{kupacUlogovan/dobavljacKupujem}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	public void kreirajFakturu(@PathParam("kupacUlogovan") String kupacUlogovan,
+			@PathParam("dobavljacKupujem") String dobavljacKupujem, List<StavkaFakture> stavke) {
+
+
+		Firma dobavljac = null;
+		for (Firma firma : firmeBaza.getFirme()) {
+			if (firma.getUsername().equals(dobavljacKupujem)) {
+				dobavljac = firma;
+				break;
+			}
+		}
+
+		Firma kupac = null;
+		for (Firma firma : firmeBaza.getFirme()) {
+			if (firma.getUsername().equals(kupacUlogovan)) {
+				kupac = firma;
+				break;
+			}
+		}
+
+		// u kupcu
+		for (StavkaFakture s : kupac.getStavke()) {
+			for (StavkaFakture kupljena : stavke) {
+				if (kupljena.getRedniBr().equals(s.getRedniBr())) {
+					BigDecimal kolicinaKupca = s.getKolicina();
+					BigDecimal kupujemStavki = kupljena.getKolicina();
+					kolicinaKupca = kolicinaKupca.add(kupujemStavki);
+				}
+			}
+		}
+
+		// u prodavcu
+		for (StavkaFakture s : dobavljac.getStavke()) {
+			for (StavkaFakture kupljena : stavke) {
+				if (kupljena.getRedniBr().equals(s.getRedniBr())) {
+					BigDecimal kolicinaProdavca = s.getKolicina();
+					BigDecimal kupujemStavki = kupljena.getKolicina();
+					kolicinaProdavca = kolicinaProdavca.subtract(kupujemStavki);
+				}
+			}
+		}
+
+		// danasnji datum
+		GregorianCalendar gregorianCalendar = new GregorianCalendar();
+		DatatypeFactory datatypeFactory=null;
+		try {
+			datatypeFactory = DatatypeFactory.newInstance();
+		} catch (DatatypeConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		XMLGregorianCalendar now = datatypeFactory.newXMLGregorianCalendar(gregorianCalendar);
+		System.out.println("sada datum " + now.toString() + now);
+
+		// racunanje vrednosti i poreza
+
+		BigDecimal robaUkupno = new BigDecimal("0");
+		for (StavkaFakture sf : stavke) {
+			robaUkupno.add(sf.getJedinicnaCena());
+		}
+
+		BigDecimal robaUslugeUkupno = new BigDecimal("0");
+		for (StavkaFakture sf : stavke) {
+			robaUslugeUkupno.add(sf.getVrednost());
+		}
+		
+		BigDecimal uslugeUkupno = new BigDecimal("0");
+		for (StavkaFakture sf : stavke) {
+			BigDecimal usluga=sf.getVrednost().subtract(sf.getJedinicnaCena());
+			uslugeUkupno.add(usluga);
+		}
+		
+		BigDecimal rabatUkupno = new BigDecimal("0");
+		for (StavkaFakture sf : stavke) {
+			rabatUkupno.add(sf.getIznosRabata());
+		}
+		
+		BigDecimal porezUkupno = new BigDecimal("0");
+		for (StavkaFakture sf : stavke) {
+			porezUkupno.add(sf.getUkupanPorez());
+		}
+		
+		BigDecimal uplataBezPoreza = robaUslugeUkupno.subtract(rabatUkupno);
+		BigDecimal uplataIznos=uplataBezPoreza.add(porezUkupno);
+		
+		
+		//banka
+		JAXBHandle<?> jaxHandle = new JAXBHandle<>(StartApp.getContextBanka());
+
+		StartApp.otvoriKonekciju();
+
+		XMLDocumentManager docMgr = StartApp.getClient().newXMLDocumentManager();
+
+		docMgr.read("/content/banka.xml", jaxHandle);
+		Banke bankeBaza = (Banke) jaxHandle.get();
+
+		StartApp.zatvoriKonekciju();
+		
+		String racun="";
+		for(Banka banka:bankeBaza.getBanke()) {
+			for(String firmaUsername: banka.getRacuniFirmi().keySet()) {
+				if(firmaUsername.equals(dobavljac)){
+					racun=banka.getRacuniFirmi().get(firmaUsername);
+					break;
+				}
+			}
+				
+			}
+		//String racun
+		
+
+		ZaglavljeFakture zaglavljeFakture = new ZaglavljeFakture();
+		zaglavljeFakture.setIdPoruke("bvfdBFDBfdbfdbaas"); //promeniti da bude jedinstveno
+		zaglavljeFakture.setNazivDobavljac(dobavljac.getNaziv());
+		zaglavljeFakture.setAdresaDobavljac(dobavljac.getAdresa());
+		zaglavljeFakture.setPibDobavljac(dobavljac.getPIB());
+		zaglavljeFakture.setNazivKupac(kupac.getNaziv());
+		zaglavljeFakture.setAdresaKupac(kupac.getAdresa());
+		zaglavljeFakture.setPibKupac(kupac.getPIB());
+		zaglavljeFakture.setBrojRacuna(new BigDecimal("456")); //promeniti da bude jedinstveno
+		zaglavljeFakture.setDatumRacuna(now);
+		zaglavljeFakture.setVrednostRobe(robaUkupno);
+		zaglavljeFakture.setVrednostUsluga(uslugeUkupno);
+		zaglavljeFakture.setUkupnoRobaIUsluge(robaUslugeUkupno);
+		zaglavljeFakture.setUkupanRabat(rabatUkupno);
+		zaglavljeFakture.setUkupanPorez(porezUkupno);
+		zaglavljeFakture.setValuta("RSD");
+		zaglavljeFakture.setIznosZaUplatu(uplataIznos);
+		zaglavljeFakture.setUplataNaRacun(racun);
+		zaglavljeFakture.setDatumValute(now);
+
+		Faktura faktura = new Faktura();
+		faktura.setZaglavljeFakture(zaglavljeFakture);
+		faktura.setStavkaFakture(stavke);
 
 	}
-	@Path("/kreirajFakturu")
-	@POST
-	 @Consumes(MediaType.APPLICATION_JSON)
-	 public void kreirajFakturu(List<StavkaFakture> stavke) {
-	  
-		for(StavkaFakture sf:stavke){
-			
-		System.out.println("backend za fakruru");
-		System.out.println(sf.getNazivRobeIliUsluge()+" kol: "+sf.getKolicina());
-		}
-	/*	
-		
-	  Firma dobavljac=null;
-	  for(Firma firma:firmeBaza.getFirme()) {
-	   if(firma.getUsername().equals(anObject)) {
-	    dobavljac=firma;
-	    break;
-	   }
-	  }
-	  
-	  Firma kupac=null;
-	  for(Firma firma:firmeBaza.getFirme()) {
-	   if(firma.getUsername().equals(anObject)) {
-	    kupac=firma;
-	    break;
-	   }
-	  }
-	   
-	   
-	  //u kupcu
-	  for(StavkaFakture s:kupac.getStavke()) {
-	   for(StavkaFakture kupljena:stavke) {
-	    if(kupljena.getRedniBr().equals(s.getRedniBr())) {
-	     BigDecimal kolicinaKupca=s.getKolicina();
-	     BigDecimal kupujemStavki=kupljena.getKolicina();
-	     kolicinaKupca=kolicinaKupca.add(kupujemStavki);
-	    }
-	   }
-	  }
-	  
-	  
-	  //u prodavcu
-	    for(StavkaFakture s:dobavljac.getStavke()) {
-	     for(StavkaFakture kupljena:stavke) {
-	      if(kupljena.getRedniBr().equals(s.getRedniBr())) {
-	       BigDecimal kolicinaProdavca=s.getKolicina();
-	       BigDecimal kupujemStavki=kupljena.getKolicina();
-	       kolicinaProdavca=kolicinaProdavca.subtract(kupujemStavki);
-	      }
-	     }
-	    }
-	  
-	  ZaglavljeFakture zaglavljeFakture=new ZaglavljeFakture();
-	  zaglavljeFakture.setIdPoruke(value);
-	  zaglavljeFakture.setNazivDobavljac(value);
-	  zaglavljeFakture.setAdresaDobavljac(value);
-	  zaglavljeFakture.setPibDobavljac(value);
-	  zaglavljeFakture.setNazivKupac(value);
-	  zaglavljeFakture.setAdresaKupac(value);
-	  zaglavljeFakture.setPibKupac(value);
-	  zaglavljeFakture.setBrojRacuna(value);
-	  zaglavljeFakture.setDatumRacuna(value);
-	  zaglavljeFakture.setVrednostRobe(value);
-	  zaglavljeFakture.setVrednostUsluga(value);
-	  zaglavljeFakture.setUkupnoRobaIUsluge(value);
-	  zaglavljeFakture.setUkupanRabat(value);
-	  zaglavljeFakture.setUkupanPorez(value);
-	  zaglavljeFakture.setValuta(value);
-	  zaglavljeFakture.setIznosZaUplatu(value);
-	  zaglavljeFakture.setUplataNaRacun(value);
-	  zaglavljeFakture.setDatumValute(value);
-	  
-	  
-	  
-	  
-	  
-	  Faktura faktura=new Faktura();
-	  faktura.setZaglavljeFakture(zaglavljeFakture);
-	  faktura.setStavkaFakture(stavke);
-	 */
-
-}
 }

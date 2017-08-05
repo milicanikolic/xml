@@ -8,8 +8,8 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import banka.Banka;
 import faktura.StavkaFakture;
-import model.Banka;
 
 @XmlRootElement
 @XmlAccessorType(XmlAccessType.FIELD)
