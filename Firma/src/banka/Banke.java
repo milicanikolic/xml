@@ -12,29 +12,29 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class Banke implements Serializable {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	
-	private List<Banka> banka;
+ /**
+  * 
+  */
+ private static final long serialVersionUID = 1L;
+ 
+ private List<Banka> banka;
 
-	public Banke() {
-		banka=new ArrayList<Banka>();
-	}
+ public Banke() {
+  banka=new ArrayList<Banka>();
+ }
 
-	public List<Banka> getBanke() {
-		return banka;
-	}
+ public List<Banka> getBanke() {
+  return banka;
+ }
 
-	public void setBanke(List<Banka> banke) {
-		this.banka = banke;
-	}
-	
-	public void dodajBanku(Banka banka) {
-		this.banka.add(banka);
-	}
-	
-	
+ public void setBanke(List<Banka> banke) {
+  this.banka = banke;
+ }
+ 
+ public void dodajBanku(Banka banka) {
+  this.banka.add(banka);
+ }
+ 
+ 
 
 }

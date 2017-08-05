@@ -6,9 +6,11 @@ app.factory('fakturaS',['$http',function($http,$scope){
 		return $http.post('/Firma/rest/firma',firmaUlogovana);
 	}
 	
-	fakturaService.naruciStavke=function(listaStavki){
+	fakturaService.naruciStavke=function(listaStavki, ulogovan, izabrana){
 		console.log("servis faktura");
-		return $http.post('/Firma/rest/firma/kreirajFakturu',listaStavki);
+		console.log(ulogovan);
+		console.log(izabrana);
+		return $http.post('/Firma/rest/firma/'+ulogovan+'/'+izabrana,listaStavki);
 	}
 	
 	return fakturaService;

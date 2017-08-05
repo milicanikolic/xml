@@ -39,6 +39,13 @@ $stateProvider.state('kreirajStavku', {
 		templateUrl : 'stranice/kreirajStavku.html',	
 		controller : 'fakturaCtrl'
 	})
+	
+	$stateProvider.state('fakture', {
+	url : '/fakture',
+		templateUrl : 'stranice/faktura.html',	
+		controller : 'fakturaCtrl'
+	})
+	
 });
 
 

@@ -4,7 +4,7 @@
 	<div class="well">
 	<div class="row">
 		<div class="col-xs-6">
-			<div  class="well siviWell1">
+			<div style="background-color: #696969; height: 135px; color: white;"  class="well">
 				<table class="table">
 					<tr>
 						<td>Naziv dobavljaca   :</td>
@@ -23,7 +23,7 @@
 		</div>
 		
 		<div class="col-xs-6">
-			<div class="well siviWell1">
+			<div style="background-color: #696969; height: 135px; color: white;" class="well ">
 				<table class="table">
 					<tr>
 						<td>Naziv kupca:</td>
@@ -41,16 +41,112 @@
 			</div>
 		</div>
 	</div>
-	
-		<div class="col-xs-12">
-			<h3><b>Racun broj <input class="form-control" type="text" style="width: 80px;" name="brojRacuna" readonly="readonly" />, dana </b></h3>
-			
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-5">
+			<h2><b>Faktura</b></h2>
 		</div>
-
+	</div>
+	<div class="row">
+		<div class="col-xs-4 col-xs-offset-4">
+			<table >
+				<tr>
+					<td style="vertical-align:middle;">Broj &nbsp;</td>
+					<td><input type="text" readonly="readonly" class="form-control input-sm" /></td>
+					<td style="vertical-align:middle;">,dana &nbsp;</td>
+					<td><input type="text" readonly="readonly" class="form-control input-sm" /></td>
+				</tr>
+			</table>
+		</div>
+	</div>
+	&nbsp;
+	<div class="row">
+	<div class="col-xs-5">
+		<table class="table">
+			<tr>
+				<td>Vrednost robe:</td>
+				<td><input type="text" readonly="readonly" class="form-control input-sm" /></td>
+			</tr>
+			<tr>
+				<td>Vrednost usluga:</td>
+				<td><input type="text" readonly="readonly" class="form-control input-sm" /></td>
+			</tr>
+			<tr>
+				<td>Ukupno robe i usluga:</td>
+				<td><input type="text" readonly="readonly" class="form-control input-sm" /></td>
+			</tr>
+			<tr>
+				<td>Ukupan rabat:</td>
+				<td><input type="text" readonly="readonly" class="form-control input-sm" /></td>
+			</tr>
+			<tr>
+				<td>Ukupan porez:</td>
+				<td><input type="text" readonly="readonly" class="form-control input-sm" /></td>
+			</tr>
+			</table>
+			</div>
+			<div class="col-xs-5 col-xs-offset-1">
+			<table class="table">
+			<tr>
+				<td>Oznaka valute:</td>
+				<td><input type="text" readonly="readonly" class="form-control input-sm" /></td>
+			</tr>
+			<tr>
+				<td>Iznos za uplatu:</td>
+				<td><input type="text" readonly="readonly" class="form-control input-sm" /></td>
+			</tr>
+			<tr>
+				<td>Uplata na racun:</td>
+				<td><input type="text" readonly="readonly" class="form-control input-sm" /></td>
+			</tr>
+			<tr>
+				<td>Datum valute:</td>
+				<td><input type="text" readonly="readonly" class="form-control input-sm" /></td>
+			</tr>
+		</table>
+	</div>
+</div>
+	<div class="row">
+		<table class="table">
+		<tr><td> </td></tr>
+		</table>
+	</div>
+		<table style="background-color: #696969; color: white; border-color: black;" class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Rbr</th>
+        <th>Naziv robe/usluge</th>
+        <th>Kolicina</th>
+        <th>Jedinica mere</th>
+        <th>Jed. cena</th>
+        <th>Vrednost</th>
+        <th>% rabata</th>
+        <th>Iznos rabata</th>
+        <th>Umanjeno za rabat</th>
+        <th>Ukupan porez</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><input class="form-control input-sm" type="text" readonly="readonly" /></td>
+        <td><input class="form-control input-sm" type="text" readonly="readonly" /></td>
+        <td><input class="form-control input-sm" type="text" readonly="readonly" /></td>
+        <td><input class="form-control input-sm" type="text" readonly="readonly" /></td>
+        <td><input class="form-control input-sm" type="text" readonly="readonly" /></td>
+        <td><input class="form-control input-sm" type="text" readonly="readonly" /></td>
+        <td><input class="form-control input-sm" type="text" readonly="readonly" /></td>
+        <td><input class="form-control input-sm" type="text" readonly="readonly" /></td>
+        <td><input class="form-control input-sm" type="text" readonly="readonly" /></td>
+        <td><input class="form-control input-sm" type="text" readonly="readonly" /></td>
+      </tr>
+    </tbody>
+  </table>
+	
+	</div>
 	
 	</div>
 	</div>
 	</div>
+	
 	
 	
 </div>

@@ -21,4 +21,7 @@ app.controller('loginCtrl', function ($scope,$window,$rootScope, loginS) {
 					}
 				})
 	}
+	$scope.uzmiUlogovanuFirmu=function(){
+		$scope.firmaUlogovana=$rootScope.firmaUlogovana;
+	}
 })

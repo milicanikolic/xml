@@ -7,41 +7,19 @@ app.controller('fakturaCtrl', function ($scope,$window,$rootScope, fakturaS) {
 	}
 	);
 
-	
-	$scope.izaberiStavke=function() {
-		var selected=$scope.stavkeIzabrane;
-		$scope.stavkeZaKupovinu=selected;
-		$scope.izabraneStavke=true;
-		console.log($scope.stavkeZaKupovinu);
-		
-	}
-	
-	
+
 	
 	$scope.selektovana=function(){
 
 		var jedna={};
 		for(jedna in $scope.stavkeIzabrane){
 			$scope.stavkeIzabrane[jedna].kolicina=0;
-			console.log($scope.stavkeIzabrane[jedna]);
-			console.log($scope.stavkeIzabrane[jedna].kolicina);
+			
 		}
 		
-		console.log($scope.stavkeIzabrane);
 		$scope.izabraneStavke=$scope.stavkeIzabrane;
 	}
 	
-	$scope.ispis=function(jednaFirma) {
-		console.log("SELEKTOVANA " + jednaFirma.naziv)
-	}
-	
-	$scope.dodajStavku=function(){
-		fakturaS.dodajStavku()
-				//.then(function(response){
-				//})
-	}
-	
-
 	
 	$scope.uzmiFirme=function(){
 		fakturaS.uzmiFirme($rootScope.firmaUlogovana)
@@ -53,7 +31,11 @@ app.controller('fakturaCtrl', function ($scope,$window,$rootScope, fakturaS) {
 	
 	
 	$scope.naruciStavke=function(){
-		fakturaS.naruciStavke($scope.izabraneStavke);
+		fakturaS.naruciStavke($scope.izabraneStavke, $rootScope.firmaUlogovana.username, $scope.jednaFirma.username)
+				.then(function(response){
+					$scope.faktura=response.data;
+					console.log($scope.faktura);
+				})
 	}
 	
 	$scope.init=function(){

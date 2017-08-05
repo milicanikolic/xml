@@ -1,23 +1,28 @@
 	<!-- HOME -->
-<div class="container">
+<div class="container" ng-controller='loginCtrl' ng-init="uzmiUlogovanuFirmu()">
 	<div class="row">
 	<div class="col-xs-6">
 	<h3><b>Podaci o firmi</b></h3>
 		<table class="table">
 			<tr>
 				<td >Naziv: </td>
-				<td >NAAAZIV</td>
+				<td >{{firmaUlogovana.naziv}}</td>
 			</tr>
 			<tr>
 				<td>Adresa: </td>
-				<td>ADRESAA</td>
+				<td>{{firmaUlogovana.adresa}}</td>
 			</tr>
 			<tr>
 				<td>PIB: </td>
-				<td>PIBB</td>
+				<td>{{firmaUlogovana.PIB}}</td>
 			</tr>
 		</table>
 	</div>
+	
+	<div class="col-xs-2 col-xs-offset-2">
+			<img style="margin-top: 50px;" alt="NoImg" src="slike/info.png" height="100" width="100" >
+		</div>
+	
 	</div>
 
 	
