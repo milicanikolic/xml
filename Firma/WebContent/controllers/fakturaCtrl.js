@@ -33,13 +33,28 @@ app.controller('fakturaCtrl', function ($scope,$window,$rootScope, fakturaS) {
 	$scope.naruciStavke=function(){
 		fakturaS.naruciStavke($scope.izabraneStavke, $rootScope.firmaUlogovana.username, $scope.jednaFirma.username)
 				.then(function(response){
-					$scope.faktura=response.data;
-					console.log($scope.faktura);
+					
+					 var x2js = new X2JS();
+					 $scope.faktura = x2js.xml_str2json( response.data );
+					 $rootScope.faktura=x2js.xml_str2json(response.data);
+					 $scope.stavkeFakture =x2js.asArray($scope.faktura.faktura.stavkaFakture);
+					 $rootScope.stavkeFakture=x2js.asArray($scope.faktura.faktura.stavkaFakture);
+						console.log($scope.faktura)	
+							
+				
+						
+					$window.location.href='#/fakture';
 				})
 	}
 	
+	
+	
 	$scope.init=function(){
-		//$scope.jednaFirma={};
 		$scope.uzmiFirme();
+	}
+	
+	$scope.dobaviFakture=function() {
+		$scope.faktura=$rootScope.faktura;
+		$scope.stavkeFakture=$rootScope.stavkeFakture;
 	}
 })

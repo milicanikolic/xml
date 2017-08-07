@@ -22,6 +22,7 @@ public class Firma implements Serializable {
 
 	private String username;
 	private String password;
+	private String port;
 	private String naziv;
 	private String adresa;
 	private String PIB;
@@ -33,10 +34,11 @@ public class Firma implements Serializable {
 		stavke=new ArrayList<StavkaFakture>();
 	}
 
-	public Firma(String username, String password, String naziv, String adresa, String pIB, Banka banka, List<StavkaFakture> stavke) {
+	public Firma(String username, String password, String port, String naziv, String adresa, String pIB, Banka banka, List<StavkaFakture> stavke) {
 		super();
 		this.username=username;
 		this.password=password;
+		this.port=port;
 		this.naziv = naziv;
 		this.adresa = adresa;
 		this.PIB = pIB;
@@ -46,6 +48,14 @@ public class Firma implements Serializable {
 
 	
 	
+	public String getPort() {
+		return port;
+	}
+
+	public void setPort(String port) {
+		this.port = port;
+	}
+
 	public String getUsername() {
 		return username;
 	}

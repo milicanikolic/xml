@@ -100,8 +100,8 @@ public class StartApp {
   Banka bankaD = new Banka("Generali", "456", "345");
 
   Firme firme = new Firme();
-  Firma firmaA = new Firma("f", "f", "Firma A", "Novosadskog Sajma 10", "12345", bankaC, firmaAstavke);
-  Firma firmaB = new Firma("firmaB", "firmaB", "Firma B", "Bulevar Oslobodjenja 55", "56789", bankaD,
+  Firma firmaA = new Firma("f", "f", "8180", "Firma A", "Novosadskog Sajma 10", "12345", bankaC, firmaAstavke);
+  Firma firmaB = new Firma("firmaB", "firmaB", "8280", "Firma B", "Bulevar Oslobodjenja 55", "56789", bankaD,
     firmaBstavke);
   
   bankaC.dodajRacun(firmaA.getUsername(), "racunfirmeA");
