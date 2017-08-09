@@ -6,7 +6,7 @@
     <xs:complexType name="faktura">
         <xs:sequence>
             <xs:element ref="fak:zaglavljeFakture"/>
-            <xs:element ref="fak:zaglavljeFakture"/>
+            <xs:element maxOccurs="unbounded" ref="fak:stavkaFakture"/>
         </xs:sequence>
     </xs:complexType>
     <xs:complexType name="zaglavljeFakture">
@@ -41,7 +41,7 @@
             <xs:element name="pibKupac" type="tip:tipPIB"/>
             <xs:element name="brojRacuna">
                 <xs:simpleType>
-                    <xs:restriction base="xs:decimal">
+                    <xs:restriction base="xs:positiveInteger">
                         <xs:totalDigits value="6"/>
                     </xs:restriction>
                 </xs:simpleType>
