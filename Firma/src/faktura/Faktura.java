@@ -37,12 +37,13 @@ import javax.xml.bind.annotation.XmlType;
  * 
  * 
  */
-@XmlRootElement
+
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "faktura", propOrder = {
     "zaglavljeFakture",
     "stavkaFakture"
 })
+@XmlRootElement
 public class Faktura {
 
     @XmlElement(required = true)

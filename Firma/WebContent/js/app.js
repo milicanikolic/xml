@@ -20,7 +20,7 @@ $stateProvider.state('pocetna', {
 $stateProvider.state('nalogZaPrenos', {
 	url : '/nalogZaPrenos',
 		templateUrl : 'stranice/nalogZaPrenos.html',	
-		controller : 'loginCtrl'
+		controller : 'nalogCtrl'
 	})
 $stateProvider.state('zahtevIzvod', {
 	url : '/zahtevIzvod',
