@@ -1,12 +1,18 @@
 app.controller('nalogCtrl', function ($scope,$window,$rootScope, nalogS) {
 	
 	$scope.init=function(){
-		$scope.uzmiSveFakture();
 		$scope.ulogovanaFirma=$rootScope.firmaUlogovana;
+		$scope.uzmiSveFakture();
+		$("#myModal2").hide();
+		
+		
 	}
 	
 	$scope.uzmiSveFakture=function(){
-		nalogS.uzmiSveFakture()
+		
+		console.log('PIBBBB'+$scope.ulogovanaFirma.PIB);
+		nalogS.uzmiSveFakture($scope.ulogovanaFirma.PIB)
+		
 			.then(function(response){
 				$scope.fakture=response.data;
 				console.log($scope.fakture);
@@ -22,16 +28,16 @@ app.controller('nalogCtrl', function ($scope,$window,$rootScope, nalogS) {
 		var today = new Date();
 		nalog.idPoruke=faktura.zaglavljeFakture.idPoruke;
 		nalog.duznik=faktura.zaglavljeFakture.nazivKupac;
-		nalog.svrhaPlacanja="";
+		nalog.svrhaPlacanja="SVRHA PLACANJA";
 		nalog.primalac=faktura.zaglavljeFakture.nazivDobavljac;
 		nalog.datumNaloga=today;
 		nalog.datumValute=faktura.zaglavljeFakture.datumValute;
 		nalog.racunDuznik=$scope.ulogovanaFirma.brojRacuna;
-		nalog.modelZaduzenja="";
-		nalog.pozivNaBrZaduzenja="";
+		nalog.modelZaduzenja=11;
+		nalog.pozivNaBrZaduzenja=1111;
 		nalog.racunPoverioca=faktura.zaglavljeFakture.uplataNaRacun;
-		nalog.modelOdobrenja="";
-		nalog.pozivNaBrOdobrenja="";
+		nalog.modelOdobrenja=11;
+		nalog.pozivNaBrOdobrenja=1111;
 		nalog.iznos=faktura.zaglavljeFakture.iznosZaUplatu;
 		nalog.oznakaValute=faktura.zaglavljeFakture.valuta;
 		nalog.hitno="";
@@ -39,11 +45,23 @@ app.controller('nalogCtrl', function ($scope,$window,$rootScope, nalogS) {
 		
 	}
 	
+	$scope.obavestenje=function(){
+	        $("#myModal2").show();
+	            $("#myModal2").fadeTo(3000, 500).slideUp(500, function(){
+	           $("#myModal2").slideUp(500);
+	            });   
+	      
+
+	}
+	
 	$scope.posaljiNalog=function(nalog){
 		console.log(nalog);
 		nalogS.posaljiNalog(nalog)
 		.then(function(response){
-			
+			$scope.obavestenje()
+			.then(function(){
+				$window.location.href='#/pocetna';
+			});
 		})
 		
 	}

@@ -1,17 +1,15 @@
 package faktura;
 
-import java.io.IOException;
 import java.io.StringReader;
-import java.nio.charset.Charset;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.JAXBContext;
@@ -28,27 +26,16 @@ import app.StartApp;
 @Path("/faktura")
 public class FakturaCtrl {
 	
-
-	private static final String prefix = "data/xquery/";
 	
 	@GET
+	@Path("/{pib}")
+	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public List<Faktura> uzmiFakture() {
+	public List<Faktura> uzmiFakture(@PathParam("pib") String pib) {
+		System.out.println("usao u uzmi sve fakture ");
 		
-		
-		
+		String upitPre = "declare namespace fak='http://ftn.uns.ac.rs/faktura';" + " for $x in doc('/content/faktura.xml')/fakture/fak:faktura[fak:zaglavljeFakture/fak:pibKupac='" + pib + "'] return $x";
 
-		//DocumentBuilderFactory factory=DocumentBuilderFactory.newInstance();
-		//factory.setNamespaceAware(true);
-		//DocumentBuilder builder=factory.
-		
-		String upitPre = "declare namespace fak='http://ftn.uns.ac.rs/faktura';" + " for $x in doc('/content/faktura.xml')/fakture/fak:faktura return $x";
-   
-		
-		
-		/*String upit = "for $x in doc('/content/faktura.xml')/fakture" +
-				" return $x";
-*/
 		ServerEvaluationCall poziv = StartApp.getClient().newServerEval();
 		List<Faktura> listaFaktura = new ArrayList<Faktura>();
 		try {

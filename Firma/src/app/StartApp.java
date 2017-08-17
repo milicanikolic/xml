@@ -18,6 +18,7 @@ import com.marklogic.client.DatabaseClient;
 import com.marklogic.client.DatabaseClientFactory;
 import com.marklogic.client.DatabaseClientFactory.Authentication;
 
+
 import faktura.Fakture;
 import firma.Firme;
 
@@ -40,21 +41,22 @@ public class StartApp {
 		uzmiPort();
 		otvoriKonekciju();
 
-		/*
+		
 		Marshaller marshallerBanka;
 
 		Fakture f=new Fakture();
-		
+	/*
 		try {
 			
 			JAXBContext contextBanka = JAXBContext.newInstance(Fakture.class);
 			marshallerBanka = contextBanka.createMarshaller();
-			marshallerBanka.marshal(f, new File(System.getProperty("jboss.server.data.dir"), "faktura.xml"));
+			marshallerBanka.marshal(f, new File(System.getProperty("jboss.server.data.dir"), "C:\Users\Nebojsa\Desktop\content\banka.xml"));
 		} catch (JAXBException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		*/
+		
 	}
 
 	public void uzmiPort() {

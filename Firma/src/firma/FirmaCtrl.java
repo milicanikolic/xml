@@ -81,8 +81,7 @@ public class FirmaCtrl {
 	public List<Firma> uzmiPreostaleFirme(Firma bezFirme) {
 
 		String upit = "for $x in doc('/content/firma.xml')/firme/firma" +
-		// " where $x/username!='" + bezFirme.getUsername() + "' and
-		// $x/password!='" + bezFirme.getPassword() + "'" +
+		 " where $x/username!='" + bezFirme.getUsername() + "' and $x/password!='" + bezFirme.getPassword() + "'" +
 				" return $x";
 
 		ServerEvaluationCall poziv = StartApp.getClient().newServerEval();
@@ -114,6 +113,8 @@ public class FirmaCtrl {
 	public Faktura kreirajFakturu(@PathParam("kupacUlogovan") String kupacUlogovan,
 			@PathParam("dobavljacKupujem") String dobavljacKupujem, List<StavkaFirme> stavke) {
 
+		System.out.println("ssssssssssssssssssssss " +kupacUlogovan + ", " + dobavljacKupujem);
+		
 		Firma dobavljac = null;
 		String upit1 = "for $x in doc('/content/firma.xml')/firme/firma" + " where $x/username='" + dobavljacKupujem
 				+ "'" + " return $x";
@@ -132,7 +133,7 @@ public class FirmaCtrl {
 		String odgovor2 = posaljiUpit(upit2);
 		if (odgovor2 != null) {
 			try {
-				kupac = unmarshaluj(Firma.class, new StreamSource(new StringReader(odgovor1)));
+				kupac = unmarshaluj(Firma.class, new StreamSource(new StringReader(odgovor2)));
 			} catch (JAXBException e) {
 				e.printStackTrace();
 			}
@@ -227,8 +228,10 @@ public class FirmaCtrl {
 			zaglavljeFakture.setIdPoruke(uid);
 			zaglavljeFakture.setNazivDobavljac(dobavljac.getNaziv());
 			zaglavljeFakture.setAdresaDobavljac(dobavljac.getAdresa());
+			System.out.println("IZ BEKENDAAA PRIMALAC: " + dobavljac.getNaziv());
 			zaglavljeFakture.setPibDobavljac(dobavljac.getPIB());
 			zaglavljeFakture.setNazivKupac(kupac.getNaziv());
+			System.out.println("IZ BEKENDAAA DUZNIKKKKK: " + kupac.getNaziv());
 			zaglavljeFakture.setAdresaKupac(kupac.getAdresa());
 			zaglavljeFakture.setPibKupac(kupac.getPIB());
 			zaglavljeFakture.setBrojRacuna(rand);

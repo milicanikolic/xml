@@ -2,8 +2,9 @@ app.factory('nalogS',['$http',function($http,$scope){
 	
 	var nalogService={};
 
-	nalogService.uzmiSveFakture=function(){
-		return $http.get('/Firma/rest/faktura');
+	nalogService.uzmiSveFakture=function(pib){
+		console.log("pib " + pib)
+		return $http.get('/Firma/rest/faktura/'+pib);
 	}
 	
 	nalogService.posaljiNalog=function(nalog){
