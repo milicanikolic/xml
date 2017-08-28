@@ -1,34 +1,31 @@
 package app;
 
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.io.InputStream;
+import java.util.HashMap;
+import java.util.Properties;
+import java.util.Set;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.ejb.Singleton;
 import javax.ejb.Startup;
-import javax.xml.bind.JAXBContext;
-import javax.xml.bind.JAXBException;
-import javax.xml.bind.Marshaller;
 
 import com.marklogic.client.DatabaseClient;
 import com.marklogic.client.DatabaseClientFactory;
 import com.marklogic.client.DatabaseClientFactory.Authentication;
-
-
-import faktura.Fakture;
-import firma.Firme;
 
 @Startup
 @Singleton
 public class StartApp {
 
 	private static DatabaseClient client;
-	private static final String fileName = System.getProperty("jboss.server.config.dir") + "\\standalone-full.xml";
+	private static final String fileName = System
+			.getProperty("jboss.server.config.dir") + "\\standalone-full.xml";
 	private static String trenutniPort;
+	private static HashMap<String,String> portWsdl;
 
 	public StartApp() {
 
@@ -37,26 +34,36 @@ public class StartApp {
 	@PostConstruct
 	public void init() {
 
-		System.out.println("POKRENUO");
+		System.out.println("POKRENUO FIRMU");
 		uzmiPort();
+		//trenutniPort=ResourceBundle.getBundle("config").getString("port");
+		System.out.println("PORT NA KOM SAM " + trenutniPort);
 		otvoriKonekciju();
+		procitajProperties();
 
+	}
+	public void procitajProperties(){
+		portWsdl=new HashMap<>();
 		
-		Marshaller marshallerBanka;
-
-		Fakture f=new Fakture();
-	/*
-		try {
+		Properties prop=new Properties();
+		ClassLoader loader=Thread.currentThread().getContextClassLoader();
+		InputStream input=null;
+		try{
+			input=loader.getResourceAsStream("config.properties");
+			prop.load(input);
 			
-			JAXBContext contextBanka = JAXBContext.newInstance(Fakture.class);
-			marshallerBanka = contextBanka.createMarshaller();
-			marshallerBanka.marshal(f, new File(System.getProperty("jboss.server.data.dir"), "C:\Users\Nebojsa\Desktop\content\banka.xml"));
-		} catch (JAXBException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
+			Set<Object> keys=prop.keySet();
+			for(Object ob:keys){
+				portWsdl.put(ob.toString(), prop.getProperty(ob.toString()));
+			}
+			
+		}catch(IOException e){
+			e.printStackTrace();
 		}
-		*/
-		
+		System.out.println("MApa je:");
+		for(String s:portWsdl.keySet()){
+			System.out.println(s+" : "+portWsdl.get(s));
+		}
 	}
 
 	public void uzmiPort() {
@@ -134,7 +141,8 @@ public class StartApp {
 	}
 
 	public static void otvoriKonekciju() {
-		client = DatabaseClientFactory.newClient("localhost", 8003, "admin", "admin", Authentication.DIGEST);
+		client = DatabaseClientFactory.newClient("sarvanlaptop", 8003, "admin",
+				"admin", Authentication.DIGEST);
 
 	}
 
@@ -156,5 +164,9 @@ public class StartApp {
 
 	public static void setTrenutniPort(String trenutniPort) {
 		StartApp.trenutniPort = trenutniPort;
+	}
+
+	public static String getWsdl(String port) {
+		return portWsdl.get(port);
 	}
 }

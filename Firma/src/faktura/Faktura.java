@@ -5,22 +5,24 @@
 // Generated on: 2017.08.10 at 01:17:00 AM CEST 
 //
 
-
 package faktura;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
-
 /**
- * <p>Java class for faktura complex type.
+ * <p>
+ * Java class for faktura complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="faktura">
@@ -39,81 +41,74 @@ import javax.xml.bind.annotation.XmlType;
  */
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "faktura", propOrder = {
-    "zaglavljeFakture",
-    "stavkaFakture"
-})
+@XmlType(name = "faktura", propOrder = { "zaglavljeFakture", "stavkaFakture" })
 @XmlRootElement
 public class Faktura {
 
-    @XmlElement(required = true)
-    protected ZaglavljeFakture zaglavljeFakture;
-    @XmlElement(required = true)
-    protected List<StavkaFakture> stavkaFakture;
+	@XmlElement(required = true)
+	protected ZaglavljeFakture zaglavljeFakture;
+	@XmlElement(required = true)
+	protected List<StavkaFakture> stavkaFakture;
 
-    /**
-     * Gets the value of the zaglavljeFakture property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ZaglavljeFakture }
-     *     
-     */
-    public ZaglavljeFakture getZaglavljeFakture() {
-        return zaglavljeFakture;
-    }
+	/**
+	 * Gets the value of the zaglavljeFakture property.
+	 * 
+	 * @return possible object is {@link ZaglavljeFakture }
+	 * 
+	 */
+	public ZaglavljeFakture getZaglavljeFakture() {
+		return zaglavljeFakture;
+	}
 
-    /**
-     * Sets the value of the zaglavljeFakture property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ZaglavljeFakture }
-     *     
-     */
-    public void setZaglavljeFakture(ZaglavljeFakture value) {
-        this.zaglavljeFakture = value;
-    }
+	/**
+	 * Sets the value of the zaglavljeFakture property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ZaglavljeFakture }
+	 * 
+	 */
+	public void setZaglavljeFakture(ZaglavljeFakture value) {
+		this.zaglavljeFakture = value;
+	}
 
-    /**
-     * Gets the value of the stavkaFakture property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the stavkaFakture property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getStavkaFakture().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link StavkaFakture }
-     * 
-     * 
-     */
-    public List<StavkaFakture> getStavkaFakture() {
-        if (stavkaFakture == null) {
-            stavkaFakture = new ArrayList<StavkaFakture>();
-        }
-        return this.stavkaFakture;
-    }
+	/**
+	 * Gets the value of the stavkaFakture property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the stavkaFakture property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getStavkaFakture().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link StavkaFakture }
+	 * 
+	 * 
+	 */
+	public List<StavkaFakture> getStavkaFakture() {
+		if (stavkaFakture == null) {
+			stavkaFakture = new ArrayList<StavkaFakture>();
+		}
+		return this.stavkaFakture;
+	}
 
 	public Faktura() {
 		super();
-		
+
 	}
 
 	public void setStavkaFakture(List<StavkaFakture> stavke) {
-		this.stavkaFakture=stavke;
-		
+		this.stavkaFakture = stavke;
+
 	}
-    
-    
 
 }

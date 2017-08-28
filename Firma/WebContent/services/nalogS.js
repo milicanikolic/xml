@@ -1,16 +1,16 @@
-app.factory('nalogS',['$http',function($http,$scope){
-	
-	var nalogService={};
+app.factory('nalogS', [ '$http', function($http, $scope) {
 
-	nalogService.uzmiSveFakture=function(pib){
+	var nalogService = {};
+
+	nalogService.uzmiSveFakture = function(pib) {
 		console.log("pib " + pib)
-		return $http.get('/Firma/rest/faktura/'+pib);
-	}
-	
-	nalogService.posaljiNalog=function(nalog){
-		return $http.post('/Firma/rest/nalog',nalog);
+		return $http.get('/Firma/rest/faktura/' + pib);
 	}
 
-return nalogService;
+	nalogService.posaljiNalog = function(nalog) {
+		return $http.post('/Firma/rest/nalog', nalog);
+	}
 
-}]);
+	return nalogService;
+
+} ]);

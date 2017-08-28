@@ -5,7 +5,6 @@
 // Generated on: 2017.08.10 at 01:17:00 AM CEST 
 //
 
-
 package faktura;
 
 import java.math.BigDecimal;
@@ -18,11 +17,13 @@ import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 import javax.xml.datatype.XMLGregorianCalendar;
 
-
 /**
- * <p>Java class for zaglavljeFakture complex type.
+ * <p>
+ * Java class for zaglavljeFakture complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="zaglavljeFakture">
@@ -90,502 +91,432 @@ import javax.xml.datatype.XMLGregorianCalendar;
  */
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "zaglavljeFakture", propOrder = {
-    "idPoruke",
-    "nazivDobavljac",
-    "adresaDobavljac",
-    "pibDobavljac",
-    "nazivKupac",
-    "adresaKupac",
-    "pibKupac",
-    "brojRacuna",
-    "datumRacuna",
-    "vrednostRobe",
-    "vrednostUsluga",
-    "ukupnoRobaIUsluge",
-    "ukupanRabat",
-    "ukupanPorez",
-    "valuta",
-    "iznosZaUplatu",
-    "uplataNaRacun",
-    "datumValute"
-})
+@XmlType(name = "zaglavljeFakture", propOrder = { "idPoruke", "nazivDobavljac",
+		"adresaDobavljac", "pibDobavljac", "nazivKupac", "adresaKupac",
+		"pibKupac", "brojRacuna", "datumRacuna", "vrednostRobe",
+		"vrednostUsluga", "ukupnoRobaIUsluge", "ukupanRabat", "ukupanPorez",
+		"valuta", "iznosZaUplatu", "uplataNaRacun", "datumValute" })
 public class ZaglavljeFakture {
 
-    @XmlElement(required = true)
-    protected String idPoruke;
-    @XmlElement(required = true)
-    protected String nazivDobavljac;
-    @XmlElement(required = true)
-    protected String adresaDobavljac;
-    @XmlElement(required = true)
-    protected String pibDobavljac;
-    @XmlElement(required = true)
-    protected String nazivKupac;
-    @XmlElement(required = true)
-    protected String adresaKupac;
-    @XmlElement(required = true)
-    protected String pibKupac;
-    @XmlElement(required = true)
-    protected BigInteger brojRacuna;
-    @XmlElement(required = true)
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar datumRacuna;
-    @XmlElement(required = true)
-    protected BigDecimal vrednostRobe;
-    @XmlElement(required = true)
-    protected BigDecimal vrednostUsluga;
-    @XmlElement(required = true)
-    protected BigDecimal ukupnoRobaIUsluge;
-    @XmlElement(required = true)
-    protected BigDecimal ukupanRabat;
-    @XmlElement(required = true)
-    protected BigDecimal ukupanPorez;
-    @XmlElement(required = true)
-    protected String valuta;
-    @XmlElement(required = true)
-    protected BigDecimal iznosZaUplatu;
-    @XmlElement(required = true)
-    protected String uplataNaRacun;
-    @XmlElement(required = true)
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar datumValute;
+	@XmlElement(required = true)
+	protected String idPoruke;
+	@XmlElement(required = true)
+	protected String nazivDobavljac;
+	@XmlElement(required = true)
+	protected String adresaDobavljac;
+	@XmlElement(required = true)
+	protected String pibDobavljac;
+	@XmlElement(required = true)
+	protected String nazivKupac;
+	@XmlElement(required = true)
+	protected String adresaKupac;
+	@XmlElement(required = true)
+	protected String pibKupac;
+	@XmlElement(required = true)
+	protected BigInteger brojRacuna;
+	@XmlElement(required = true)
+	@XmlSchemaType(name = "date")
+	protected XMLGregorianCalendar datumRacuna;
+	@XmlElement(required = true)
+	protected BigDecimal vrednostRobe;
+	@XmlElement(required = true)
+	protected BigDecimal vrednostUsluga;
+	@XmlElement(required = true)
+	protected BigDecimal ukupnoRobaIUsluge;
+	@XmlElement(required = true)
+	protected BigDecimal ukupanRabat;
+	@XmlElement(required = true)
+	protected BigDecimal ukupanPorez;
+	@XmlElement(required = true)
+	protected String valuta;
+	@XmlElement(required = true)
+	protected BigDecimal iznosZaUplatu;
+	@XmlElement(required = true)
+	protected String uplataNaRacun;
+	@XmlElement(required = true)
+	@XmlSchemaType(name = "date")
+	protected XMLGregorianCalendar datumValute;
 
-    /**
-     * Gets the value of the idPoruke property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getIdPoruke() {
-        return idPoruke;
-    }
+	/**
+	 * Gets the value of the idPoruke property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getIdPoruke() {
+		return idPoruke;
+	}
 
-    /**
-     * Sets the value of the idPoruke property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setIdPoruke(String value) {
-        this.idPoruke = value;
-    }
+	/**
+	 * Sets the value of the idPoruke property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setIdPoruke(String value) {
+		this.idPoruke = value;
+	}
 
-    /**
-     * Gets the value of the nazivDobavljac property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNazivDobavljac() {
-        return nazivDobavljac;
-    }
+	/**
+	 * Gets the value of the nazivDobavljac property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getNazivDobavljac() {
+		return nazivDobavljac;
+	}
 
-    /**
-     * Sets the value of the nazivDobavljac property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNazivDobavljac(String value) {
-        this.nazivDobavljac = value;
-    }
+	/**
+	 * Sets the value of the nazivDobavljac property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setNazivDobavljac(String value) {
+		this.nazivDobavljac = value;
+	}
 
-    /**
-     * Gets the value of the adresaDobavljac property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAdresaDobavljac() {
-        return adresaDobavljac;
-    }
+	/**
+	 * Gets the value of the adresaDobavljac property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getAdresaDobavljac() {
+		return adresaDobavljac;
+	}
 
-    /**
-     * Sets the value of the adresaDobavljac property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAdresaDobavljac(String value) {
-        this.adresaDobavljac = value;
-    }
+	/**
+	 * Sets the value of the adresaDobavljac property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAdresaDobavljac(String value) {
+		this.adresaDobavljac = value;
+	}
 
-    /**
-     * Gets the value of the pibDobavljac property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPibDobavljac() {
-        return pibDobavljac;
-    }
+	/**
+	 * Gets the value of the pibDobavljac property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getPibDobavljac() {
+		return pibDobavljac;
+	}
 
-    /**
-     * Sets the value of the pibDobavljac property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPibDobavljac(String value) {
-        this.pibDobavljac = value;
-    }
+	/**
+	 * Sets the value of the pibDobavljac property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setPibDobavljac(String value) {
+		this.pibDobavljac = value;
+	}
 
-    /**
-     * Gets the value of the nazivKupac property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getNazivKupac() {
-        return nazivKupac;
-    }
+	/**
+	 * Gets the value of the nazivKupac property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getNazivKupac() {
+		return nazivKupac;
+	}
 
-    /**
-     * Sets the value of the nazivKupac property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setNazivKupac(String value) {
-        this.nazivKupac = value;
-    }
+	/**
+	 * Sets the value of the nazivKupac property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setNazivKupac(String value) {
+		this.nazivKupac = value;
+	}
 
-    /**
-     * Gets the value of the adresaKupac property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getAdresaKupac() {
-        return adresaKupac;
-    }
+	/**
+	 * Gets the value of the adresaKupac property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getAdresaKupac() {
+		return adresaKupac;
+	}
 
-    /**
-     * Sets the value of the adresaKupac property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setAdresaKupac(String value) {
-        this.adresaKupac = value;
-    }
+	/**
+	 * Sets the value of the adresaKupac property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setAdresaKupac(String value) {
+		this.adresaKupac = value;
+	}
 
-    /**
-     * Gets the value of the pibKupac property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getPibKupac() {
-        return pibKupac;
-    }
+	/**
+	 * Gets the value of the pibKupac property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getPibKupac() {
+		return pibKupac;
+	}
 
-    /**
-     * Sets the value of the pibKupac property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setPibKupac(String value) {
-        this.pibKupac = value;
-    }
+	/**
+	 * Sets the value of the pibKupac property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setPibKupac(String value) {
+		this.pibKupac = value;
+	}
 
-    /**
-     * Gets the value of the brojRacuna property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getBrojRacuna() {
-        return brojRacuna;
-    }
+	/**
+	 * Gets the value of the brojRacuna property.
+	 * 
+	 * @return possible object is {@link BigInteger }
+	 * 
+	 */
+	public BigInteger getBrojRacuna() {
+		return brojRacuna;
+	}
 
-    /**
-     * Sets the value of the brojRacuna property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setBrojRacuna(BigInteger value) {
-        this.brojRacuna = value;
-    }
+	/**
+	 * Sets the value of the brojRacuna property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigInteger }
+	 * 
+	 */
+	public void setBrojRacuna(BigInteger value) {
+		this.brojRacuna = value;
+	}
 
-    /**
-     * Gets the value of the datumRacuna property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getDatumRacuna() {
-        return datumRacuna;
-    }
+	/**
+	 * Gets the value of the datumRacuna property.
+	 * 
+	 * @return possible object is {@link XMLGregorianCalendar }
+	 * 
+	 */
+	public XMLGregorianCalendar getDatumRacuna() {
+		return datumRacuna;
+	}
 
-    /**
-     * Sets the value of the datumRacuna property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDatumRacuna(XMLGregorianCalendar value) {
-        this.datumRacuna = value;
-    }
+	/**
+	 * Sets the value of the datumRacuna property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link XMLGregorianCalendar }
+	 * 
+	 */
+	public void setDatumRacuna(XMLGregorianCalendar value) {
+		this.datumRacuna = value;
+	}
 
-    /**
-     * Gets the value of the vrednostRobe property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public BigDecimal getVrednostRobe() {
-        return vrednostRobe;
-    }
+	/**
+	 * Gets the value of the vrednostRobe property.
+	 * 
+	 * @return possible object is {@link BigDecimal }
+	 * 
+	 */
+	public BigDecimal getVrednostRobe() {
+		return vrednostRobe;
+	}
 
-    /**
-     * Sets the value of the vrednostRobe property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public void setVrednostRobe(BigDecimal value) {
-        this.vrednostRobe = value;
-    }
+	/**
+	 * Sets the value of the vrednostRobe property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigDecimal }
+	 * 
+	 */
+	public void setVrednostRobe(BigDecimal value) {
+		this.vrednostRobe = value;
+	}
 
-    /**
-     * Gets the value of the vrednostUsluga property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public BigDecimal getVrednostUsluga() {
-        return vrednostUsluga;
-    }
+	/**
+	 * Gets the value of the vrednostUsluga property.
+	 * 
+	 * @return possible object is {@link BigDecimal }
+	 * 
+	 */
+	public BigDecimal getVrednostUsluga() {
+		return vrednostUsluga;
+	}
 
-    /**
-     * Sets the value of the vrednostUsluga property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public void setVrednostUsluga(BigDecimal value) {
-        this.vrednostUsluga = value;
-    }
+	/**
+	 * Sets the value of the vrednostUsluga property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigDecimal }
+	 * 
+	 */
+	public void setVrednostUsluga(BigDecimal value) {
+		this.vrednostUsluga = value;
+	}
 
-    /**
-     * Gets the value of the ukupnoRobaIUsluge property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public BigDecimal getUkupnoRobaIUsluge() {
-        return ukupnoRobaIUsluge;
-    }
+	/**
+	 * Gets the value of the ukupnoRobaIUsluge property.
+	 * 
+	 * @return possible object is {@link BigDecimal }
+	 * 
+	 */
+	public BigDecimal getUkupnoRobaIUsluge() {
+		return ukupnoRobaIUsluge;
+	}
 
-    /**
-     * Sets the value of the ukupnoRobaIUsluge property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public void setUkupnoRobaIUsluge(BigDecimal value) {
-        this.ukupnoRobaIUsluge = value;
-    }
+	/**
+	 * Sets the value of the ukupnoRobaIUsluge property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigDecimal }
+	 * 
+	 */
+	public void setUkupnoRobaIUsluge(BigDecimal value) {
+		this.ukupnoRobaIUsluge = value;
+	}
 
-    /**
-     * Gets the value of the ukupanRabat property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public BigDecimal getUkupanRabat() {
-        return ukupanRabat;
-    }
+	/**
+	 * Gets the value of the ukupanRabat property.
+	 * 
+	 * @return possible object is {@link BigDecimal }
+	 * 
+	 */
+	public BigDecimal getUkupanRabat() {
+		return ukupanRabat;
+	}
 
-    /**
-     * Sets the value of the ukupanRabat property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public void setUkupanRabat(BigDecimal value) {
-        this.ukupanRabat = value;
-    }
+	/**
+	 * Sets the value of the ukupanRabat property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigDecimal }
+	 * 
+	 */
+	public void setUkupanRabat(BigDecimal value) {
+		this.ukupanRabat = value;
+	}
 
-    /**
-     * Gets the value of the ukupanPorez property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public BigDecimal getUkupanPorez() {
-        return ukupanPorez;
-    }
+	/**
+	 * Gets the value of the ukupanPorez property.
+	 * 
+	 * @return possible object is {@link BigDecimal }
+	 * 
+	 */
+	public BigDecimal getUkupanPorez() {
+		return ukupanPorez;
+	}
 
-    /**
-     * Sets the value of the ukupanPorez property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public void setUkupanPorez(BigDecimal value) {
-        this.ukupanPorez = value;
-    }
+	/**
+	 * Sets the value of the ukupanPorez property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigDecimal }
+	 * 
+	 */
+	public void setUkupanPorez(BigDecimal value) {
+		this.ukupanPorez = value;
+	}
 
-    /**
-     * Gets the value of the valuta property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getValuta() {
-        return valuta;
-    }
+	/**
+	 * Gets the value of the valuta property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getValuta() {
+		return valuta;
+	}
 
-    /**
-     * Sets the value of the valuta property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setValuta(String value) {
-        this.valuta = value;
-    }
+	/**
+	 * Sets the value of the valuta property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setValuta(String value) {
+		this.valuta = value;
+	}
 
-    /**
-     * Gets the value of the iznosZaUplatu property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public BigDecimal getIznosZaUplatu() {
-        return iznosZaUplatu;
-    }
+	/**
+	 * Gets the value of the iznosZaUplatu property.
+	 * 
+	 * @return possible object is {@link BigDecimal }
+	 * 
+	 */
+	public BigDecimal getIznosZaUplatu() {
+		return iznosZaUplatu;
+	}
 
-    /**
-     * Sets the value of the iznosZaUplatu property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public void setIznosZaUplatu(BigDecimal value) {
-        this.iznosZaUplatu = value;
-    }
+	/**
+	 * Sets the value of the iznosZaUplatu property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigDecimal }
+	 * 
+	 */
+	public void setIznosZaUplatu(BigDecimal value) {
+		this.iznosZaUplatu = value;
+	}
 
-    /**
-     * Gets the value of the uplataNaRacun property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getUplataNaRacun() {
-        return uplataNaRacun;
-    }
+	/**
+	 * Gets the value of the uplataNaRacun property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getUplataNaRacun() {
+		return uplataNaRacun;
+	}
 
-    /**
-     * Sets the value of the uplataNaRacun property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setUplataNaRacun(String value) {
-        this.uplataNaRacun = value;
-    }
+	/**
+	 * Sets the value of the uplataNaRacun property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setUplataNaRacun(String value) {
+		this.uplataNaRacun = value;
+	}
 
-    /**
-     * Gets the value of the datumValute property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getDatumValute() {
-        return datumValute;
-    }
+	/**
+	 * Gets the value of the datumValute property.
+	 * 
+	 * @return possible object is {@link XMLGregorianCalendar }
+	 * 
+	 */
+	public XMLGregorianCalendar getDatumValute() {
+		return datumValute;
+	}
 
-    /**
-     * Sets the value of the datumValute property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDatumValute(XMLGregorianCalendar value) {
-        this.datumValute = value;
-    }
+	/**
+	 * Sets the value of the datumValute property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link XMLGregorianCalendar }
+	 * 
+	 */
+	public void setDatumValute(XMLGregorianCalendar value) {
+		this.datumValute = value;
+	}
 
 	public ZaglavljeFakture() {
 		super();
 	}
 
-    
 }

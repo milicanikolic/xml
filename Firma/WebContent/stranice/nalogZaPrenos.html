@@ -1,315 +1,350 @@
 
 <div class="container" ng-controller="nalogCtrl" ng-init="init()">
-<div class="row">
-<div class="col-xs-3">
-<h3>Fakture:</h3>	
-{{ulog}}
-	<div class="table-responsive" style="width: 270px" >
-    	<table class="table">
-        	<thead>
-            	<tr>
-            		<th>Naziv dobavljaca</th>
-                    <th>Iznos za uplatu</th>
-                    <th>Pregled</th>
-                </tr>
-            </thead>
-        	<tbody>
-            	<tr ng-repeat="faktura in fakture">
-            		 <td>
-                        {{faktura.zaglavljeFakture.nazivDobavljac}}
-                    </td>
-                    <td>
-                        {{faktura.zaglavljeFakture.iznosZaUplatu}}
-                    </td>
-                    <td>
-						<button style="background-color: #696969; color:white; " type="button" ng-click="popuniFakturu(faktura)" class="btn btn-default h" data-toggle="modal" data-target="#myModal">Pregled</button>		
-	                </td>
-				</tr>
-             </tbody>
-          </table>
-  	</div>
-		
-	
-	<!-- Modal -PRIKAZ FAKTURE******************************************** -->
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog modal-lg">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">
-          <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h3 class="modal-title" align="center">Faktura</h3>
-        </div>
-        <div class="modal-body">
-          
-          
-          <div class="row">
-	<div class="col-xs-14 ">
-	<div class="well">
 	<div class="row">
-		<div class="col-xs-6">
-			<div style="background-color: #696969; height: 135px; color: white;"  class="well">
+		<div class="col-xs-3">
+			<h3>Fakture:</h3>
+			{{ulog}}
+			<div class="table-responsive" style="width: 270px">
 				<table class="table">
-					<tr>
-						<td>Naziv dobavljaca   :</td>
-						<td>{{faktura.zaglavljeFakture.nazivDobavljac}}</td>
-					</tr>
-					<tr>
-						<td>Adresa dobavljaca   :</td>
-						<td>{{faktura.zaglavljeFakture.adresaDobavljac}}</td>
-					</tr>
-					<tr>
-						<td>PIB dobavljaca     :</td>
-						<td>{{faktura.zaglavljeFakture.pibDobavljac}}</td>
-					</tr>
+					<thead>
+						<tr>
+							<th>Naziv dobavljaca</th>
+							<th>Iznos za uplatu</th>
+							<th>Pregled</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr ng-repeat="faktura in fakture">
+							<td>{{faktura.zaglavljeFakture.nazivDobavljac}}</td>
+							<td>{{faktura.zaglavljeFakture.iznosZaUplatu}}</td>
+							<td>
+								<button style="background-color: #696969; color: white;"
+									type="button" ng-click="popuniFakturu(faktura)"
+									class="btn btn-default h" data-toggle="modal"
+									data-target="#myModal">Pregled</button>
+							</td>
+						</tr>
+					</tbody>
 				</table>
 			</div>
-		</div>
-		
-		<div class="col-xs-6">
-			<div style="background-color: #696969; height: 135px; color: white;" class="well ">
-				<table class="table">
-					<tr>
-						<td>Naziv kupca:</td>
-						<td>{{faktura.zaglavljeFakture.nazivKupac}}</td>
-					</tr>
-					<tr>
-						<td>Adresa kupca:</td>
-						<td>{{faktura.zaglavljeFakture.adresaKupac}}</td>
-					</tr>
-					<tr>
-						<td>PIB kupca:</td>
-						<td>{{faktura.zaglavljeFakture.pibKupac}}</td>
-					</tr>
-				</table>
+
+
+			<!-- Modal -PRIKAZ FAKTURE******************************************** -->
+			<div class="modal fade" id="myModal" role="dialog">
+				<div class="modal-dialog modal-lg">
+
+					<!-- Modal content-->
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal">&times;</button>
+							<h3 class="modal-title" align="center">Faktura</h3>
+						</div>
+						<div class="modal-body">
+
+
+							<div class="row">
+								<div class="col-xs-14 ">
+									<div class="well">
+										<div class="row">
+											<div class="col-xs-6">
+												<div
+													style="background-color: #696969; height: 135px; color: white;"
+													class="well">
+													<table class="table">
+														<tr>
+															<td>Naziv dobavljaca :</td>
+															<td>{{faktura.zaglavljeFakture.nazivDobavljac}}</td>
+														</tr>
+														<tr>
+															<td>Adresa dobavljaca :</td>
+															<td>{{faktura.zaglavljeFakture.adresaDobavljac}}</td>
+														</tr>
+														<tr>
+															<td>PIB dobavljaca :</td>
+															<td>{{faktura.zaglavljeFakture.pibDobavljac}}</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+
+											<div class="col-xs-6">
+												<div
+													style="background-color: #696969; height: 135px; color: white;"
+													class="well ">
+													<table class="table">
+														<tr>
+															<td>Naziv kupca:</td>
+															<td>{{faktura.zaglavljeFakture.nazivKupac}}</td>
+														</tr>
+														<tr>
+															<td>Adresa kupca:</td>
+															<td>{{faktura.zaglavljeFakture.adresaKupac}}</td>
+														</tr>
+														<tr>
+															<td>PIB kupca:</td>
+															<td>{{faktura.zaglavljeFakture.pibKupac}}</td>
+														</tr>
+													</table>
+												</div>
+											</div>
+										</div>
+										<!-- ffffffffffffffff -->
+
+										&nbsp;
+										<div class="row">
+
+											<div class="col-xs-5 ">
+												<table class="table">
+													<tr>
+														<td>Uplata na racun:</td>
+														<td><input type="text" readonly="readonly"
+															class="form-control input-sm"
+															value="{{faktura.zaglavljeFakture.brojRacuna}}" /></td>
+													</tr>
+												</table>
+											</div>
+
+											<div class="col-xs-5 col-xs-offset-2">
+												<table class="table">
+													<tr>
+														<td style="color: green;">Iznos za uplatu:</td>
+														<td><input type="text" readonly="readonly"
+															class="form-control input-sm"
+															value="{{faktura.zaglavljeFakture.iznosZaUplatu}}" /></td>
+													</tr>
+												</table>
+											</div>
+										</div>
+										<div class="row">
+											<table class="table">
+												<tr>
+													<td></td>
+												</tr>
+											</table>
+										</div>
+										<table
+											style="background-color: #696969; color: white; border-color: black;"
+											class="table table-bordered">
+											<thead>
+												<tr>
+													<th>Rbr</th>
+													<th>Naziv robe/usluge</th>
+													<th>Kolicina</th>
+													<th>Jedinica mere</th>
+													<th>Jed. cena</th>
+													<th>Vrednost</th>
+													<th>% rabata</th>
+													<th>Iznos rabata</th>
+													<th>Umanjeno za rabat</th>
+													<th>Ukupan porez</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr ng-repeat="stavka in faktura.stavkaFakture">
+													<td><input class="form-control input-sm" type="text"
+														readonly="readonly" value="{{stavka.redniBr}}" /></td>
+													<td><input class="form-control input-sm" type="text"
+														readonly="readonly" value="{{stavka.nazivRobeIliUsluge}}" /></td>
+													<td><input class="form-control input-sm" type="text"
+														readonly="readonly" value="{{stavka.kolicina}}" /></td>
+													<td><input class="form-control input-sm" type="text"
+														readonly="readonly" value="{{stavka.jedinicaMere}}" /></td>
+													<td><input class="form-control input-sm" type="text"
+														readonly="readonly" value="{{stavka.jedinicnaCena}}" /></td>
+													<td><input class="form-control input-sm" type="text"
+														readonly="readonly" value="{{stavka.vrednost}}" /></td>
+													<td><input class="form-control input-sm" type="text"
+														readonly="readonly" value="{{stavka.procenatRabata}}" /></td>
+													<td><input class="form-control input-sm" type="text"
+														readonly="readonly" value="{{stavka.iznosRabata}}" /></td>
+													<td><input class="form-control input-sm" type="text"
+														readonly="readonly" value="{{stavka.umanjenoZaRabat}}" /></td>
+													<td><input class="form-control input-sm" type="text"
+														readonly="readonly" value="{{stavka.ukupanPorez}}" /></td>
+												</tr>
+											</tbody>
+										</table>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn zutoDugme" data-dismiss="modal"
+								ng-click="plati(faktura)">Plati</button>
+						</div>
+					</div>
+
+				</div>
 			</div>
+
 		</div>
-	</div>
-	<!-- ffffffffffffffff -->
-	
-	&nbsp;
-	<div class="row">
-
-			<div class="col-xs-5 ">
-			<table class="table">			
-			<tr>
-				<td>Uplata na racun:</td>
-				<td><input type="text" readonly="readonly" class="form-control input-sm" value="{{faktura.zaglavljeFakture.brojRacuna}}"/></td>
-			</tr>
-		</table>
-		</div>
-		
-		<div class="col-xs-5 col-xs-offset-2">
-			<table class="table">			
-			<tr>
-				<td style="color: green;">Iznos za uplatu:</td>
-				<td><input type="text" readonly="readonly" class="form-control input-sm" value="{{faktura.zaglavljeFakture.iznosZaUplatu}}"/></td>
-			</tr>
-		</table>
-		</div>
-</div>
-	<div class="row">
-		<table class="table">
-		<tr><td> </td></tr>
-		</table>
-	</div>
-		<table style="background-color: #696969; color: white; border-color: black;" class="table table-bordered">
-    <thead>
-      <tr>
-        <th>Rbr</th>
-        <th>Naziv robe/usluge</th>
-        <th>Kolicina</th>
-        <th>Jedinica mere</th>
-        <th>Jed. cena</th>
-        <th>Vrednost</th>
-        <th>% rabata</th>
-        <th>Iznos rabata</th>
-        <th>Umanjeno za rabat</th>
-        <th>Ukupan porez</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="stavka in faktura.stavkaFakture">
-        <td><input class="form-control input-sm" type="text" readonly="readonly" value="{{stavka.redniBr}}" /></td>
-        <td><input class="form-control input-sm" type="text" readonly="readonly" value="{{stavka.nazivRobeIliUsluge}}" /></td>
-        <td><input class="form-control input-sm" type="text" readonly="readonly" value="{{stavka.kolicina}}" /></td>
-        <td><input class="form-control input-sm" type="text" readonly="readonly" value="{{stavka.jedinicaMere}}" /></td>
-        <td><input class="form-control input-sm" type="text" readonly="readonly" value="{{stavka.jedinicnaCena}}" /></td>
-        <td><input class="form-control input-sm" type="text" readonly="readonly" value="{{stavka.vrednost}}" /></td>
-        <td><input class="form-control input-sm" type="text" readonly="readonly" value="{{stavka.procenatRabata}}" /></td>
-        <td><input class="form-control input-sm" type="text" readonly="readonly" value="{{stavka.iznosRabata}}" /></td>
-        <td><input class="form-control input-sm" type="text" readonly="readonly" value="{{stavka.umanjenoZaRabat}}" /></td>
-        <td><input class="form-control input-sm" type="text" readonly="readonly" value="{{stavka.ukupanPorez}}" /></td>
-      </tr>
-    </tbody>
-  </table>
-	
-	</div>
-	
-	</div>
-	</div>
-	</div>
-        <div class="modal-footer">
-          <button type="button" class="btn zutoDugme" data-dismiss="modal" ng-click="plati(faktura)">Plati</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-  
-</div>
 
 
-<!-- KRAJ DIJALOGAAAAAAAAAAAAAAAAAA -->
+		<!-- KRAJ DIJALOGAAAAAAAAAAAAAAAAAA -->
 
-<!-- **********************NALOG ZA PRENOS************** -->
-	<div class="col-xs-9 " >
-		<div style="height: 530px;width: 820px" class="well">
-		<div class="row">
+		<!-- **********************NALOG ZA PRENOS************** -->
+		<div class="col-xs-9 ">
+			<div style="height: 530px; width: 820px" class="well">
+				<div class="row">
 					<div class="col-xs-4 col-xs-offset-8">
-						<h3><b>Nalog za prenos</b></h3>
+						<h3>
+							<b>Nalog za prenos</b>
+						</h3>
 					</div>
 				</div>
-			<div class="row">
-			<div class="row">
-			&nbsp;
-			</div>
-				<div class="col-xs-6">
-					<div class="form-group">
-  						<label for="duz">Duznik:</label>
-  						<textarea class="form-control" rows="3" id="duz" ng-model="nalog.duznik"></textarea>
-					</div>
-					<div class="form-group">
-  						<label for="svrha">Svrha placanja:</label>
-  						<textarea class="form-control" rows="3" id="svrha" ng-model="nalog.svrhaPlacanja"></textarea>
-					</div>
-					<div class="form-group">
-  						<label for="pri">Primalac:</label>
-  						<textarea class="form-control" rows="3" id="pri" ng-model="nalog.primalac"></textarea>
-					</div>
-					<div class="form-group">
-					<label style="text-align: right;" for="datum">Mesto i datum prijema</label>
-  						<input type="date" class="form-control" id="datum" ng-model="nalog.datumNaloga"/>
-  						
-					</div>
-				</div>
-				<div class="col-xs-6">
-				
-					<div class="row">
-						<div class="col-xs-3">
-							<div class="form-group">
-  								<label for="sifra">Sifra pl:</label>
-  								<!--  <input type="number" min="0" class="form-control" id="sifra"/>-->
-							</div>
-						</div>
-						<div class="col-xs-3">
-							<div class="form-group">
-  								<label for="val">Valuta:</label>
-  								<input type="text" class="form-control" id="val" ng-model="nalog.oznakaValute"/>
-							</div>
-						</div>
-						<div class="col-xs-6">
-							<div class="form-group">
-  								<label for="iznos">Iznos:</label>
-  								<input type="number" min="0" class="form-control" id="iznos" ng-model="nalog.iznos"/>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row">
-					<div class="col-xs-12">
+				<div class="row">
+					<div class="row">&nbsp;</div>
+					<div class="col-xs-6">
 						<div class="form-group">
-  								<label for="racun">Racun duznika:</label>
-  								<input type="text" class="form-control" id="racun" ng-model="nalog.racunDuznik"/>
-							</div>
-							</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-xs-3">
-							<div class="form-group">
-  								<label for="model">Model:</label>
-  								<input type="number" min="0" class="form-control" id="model" ng-model="nalog.modelZaduzenja"/>
-							</div>
+							<label for="duz">Duznik:</label>
+							<textarea class="form-control" rows="3" id="duz"
+								ng-model="nalog.duznik"></textarea>
 						</div>
-						<div class="col-xs-9">
-							<div class="form-group">
-  								<label for="pozivNaBr">Poziv na broj(zaduzenje):</label>
-  								<input type="text" class="form-control" id="pozivNaBr" ng-model="nalog.pozivNaBrZaduzenja"/>
-							</div>
-						</div>
-					</div>
-					
-					<div class="row">
-					<div class="col-xs-12">
 						<div class="form-group">
-  								<label for="racunP">Racun primaoca:</label>
-  								<input type="text" class="form-control" id="racunP" ng-model="nalog.racunPoverioca"/>
-							</div>
-					</div>
-					</div>
-					
-					<div class="row">
-						<div class="col-xs-3">
-							<div class="form-group">
-  								<label for="model2">Model:</label>
-  								<input type="number" min="0" class="form-control" id="model2" ng-model="nalog.modelOdobrenja"/>
-							</div>
+							<label for="svrha">Svrha placanja:</label>
+							<textarea class="form-control" rows="3" id="svrha"
+								ng-model="nalog.svrhaPlacanja"></textarea>
 						</div>
-						<div class="col-xs-9">
-							<div class="form-group">
-  								<label for="pozivNaBrOd">Poziv na broj(odobrenje):</label>
-  								<input type="text" class="form-control" id="pozivNaBrOd" ng-model="nalog.pozivNaBrOdobrenja"/>
-							</div>
+						<div class="form-group">
+							<label for="pri">Primalac:</label>
+							<textarea class="form-control" rows="3" id="pri"
+								ng-model="nalog.primalac"></textarea>
+						</div>
+						<div class="form-group">
+							<label style="text-align: right;" for="datum">Mesto i
+								datum prijema</label> <input type="date" class="form-control" id="datum"
+								ng-model="nalog.datumNaloga" />
+
 						</div>
 					</div>
-					<div class="row">
-						<div class="col-xs-6">
-							<div class="form-group">
-  								<input type="date" class="form-control" id="datum2" ng-model="nalog.datumValute" />
-  								<label style="text-align: right;" for="datum2">Datum valute</label>
+					<div class="col-xs-6">
+
+						<div class="row">
+							<div class="col-xs-3">
+								<div class="form-group">
+									<label for="sifra">Sifra pl:</label>
+									<!--  <input type="number" min="0" class="form-control" id="sifra"/>-->
+								</div>
+							</div>
+							<div class="col-xs-3">
+								<div class="form-group">
+									<label for="val">Valuta:</label> <input type="text"
+										class="form-control" id="val" ng-model="nalog.oznakaValute" />
+								</div>
+							</div>
+							<div class="col-xs-6">
+								<div class="form-group">
+									<label for="iznos">Iznos:</label> <input type="number" min="0"
+										class="form-control" id="iznos" ng-model="nalog.iznos" />
+								</div>
 							</div>
 						</div>
-						<div class="col-xs-2">
-							<div class="form-group">
-  								<input type="checkbox" class="form-control" id="hitno" ng-model="nalog.hitno"/>
-  								<label style="text-align: right;" for="hitno">Hitno</label>
+
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="form-group">
+									<label for="racun">Racun duznika:</label> <input type="text"
+										class="form-control" id="racun" ng-model="nalog.racunDuznik" />
+								</div>
 							</div>
 						</div>
+
+						<div class="row">
+							<div class="col-xs-3">
+								<div class="form-group">
+									<label for="model">Model:</label> <input type="number" min="0"
+										class="form-control" id="model"
+										ng-model="nalog.modelZaduzenja" />
+								</div>
+							</div>
+							<div class="col-xs-9">
+								<div class="form-group">
+									<label for="pozivNaBr">Poziv na broj(zaduzenje):</label> <input
+										type="text" class="form-control" id="pozivNaBr"
+										ng-model="nalog.pozivNaBrZaduzenja" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-12">
+								<div class="form-group">
+									<label for="racunP">Racun primaoca:</label> <input type="text"
+										class="form-control" id="racunP"
+										ng-model="nalog.racunPoverioca" />
+								</div>
+							</div>
+						</div>
+
+						<div class="row">
+							<div class="col-xs-3">
+								<div class="form-group">
+									<label for="model2">Model:</label> <input type="number" min="0"
+										class="form-control" id="model2"
+										ng-model="nalog.modelOdobrenja" />
+								</div>
+							</div>
+							<div class="col-xs-9">
+								<div class="form-group">
+									<label for="pozivNaBrOd">Poziv na broj(odobrenje):</label> <input
+										type="text" class="form-control" id="pozivNaBrOd"
+										ng-model="nalog.pozivNaBrOdobrenja" />
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-xs-6">
+								<div class="form-group">
+									<input type="date" class="form-control" id="datum2"
+										ng-model="nalog.datumValute" /> <label
+										style="text-align: right;" for="datum2">Datum valute</label>
+								</div>
+							</div>
+							<div class="col-xs-2">
+								<div class="form-group">
+									<input type="checkbox" class="form-control" id="hitno"
+										ng-model="nalog.hitno" /> <label style="text-align: right;"
+										for="hitno">Hitno</label>
+								</div>
+							</div>
+						</div>
+
 					</div>
-					
 				</div>
 			</div>
 		</div>
 	</div>
-	</div>
-	
+
 	<div class="row">
 		<div class="col-xs-1 col-xs-offset-9">
-			<a href="" style="width: 150px;" id="plati" class="btn zutoDugme"  ng-click="posaljiNalog(nalog)">Posalji nalog</a>
+			<a href="" style="width: 150px;" id="plati" class="btn zutoDugme"
+				ng-click="posaljiNalog(nalog)">Posalji nalog</a>
 		</div>
 	</div>
-	
-	
-	
-	
+
+
+
+
 	<!-- Modal za obavestenjeeee-->
-<div style="margin-top: 200px;" id="myModal2" class="modal fade" role="dialog">
-  <div class="modal-dialog">
+	<div style="margin-top: 200px;" id="myModal2" class="modal fade"
+		role="dialog">
+		<div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content" clas="siviWell1">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Obavestenje</h4>
-      </div>
-      <div class="modal-body">
-        <p style="color: green;">Nalog je uspesno poslat.</p>
-      </div>
-    </div>
+			<!-- Modal content-->
+			<div class="modal-content" clas="siviWell1">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title">Obavestenje</h4>
+				</div>
+				<div class="modal-body">
+					<p style="color: green;">Nalog je uspesno poslat.</p>
+				</div>
+			</div>
 
-  </div>
-</div>
-	
-	
+		</div>
 	</div>
+
+
+</div>

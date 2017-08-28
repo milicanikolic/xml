@@ -11,9 +11,6 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 public class StavkaFirme implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 4440887577193866324L;
 
 	private BigDecimal redniBr;
@@ -31,9 +28,11 @@ public class StavkaFirme implements Serializable {
 		super();
 	}
 
-	public StavkaFirme(BigDecimal redniBr, String nazivRobeIliUsluge, BigDecimal kolicina, String jedinicaMere,
-			BigDecimal jedinicnaCena, BigDecimal vrednost, BigDecimal procenatRabata, BigDecimal iznosRabata,
-			BigDecimal umanjenoZaRabat, BigDecimal ukupanPorez) {
+	public StavkaFirme(BigDecimal redniBr, String nazivRobeIliUsluge,
+			BigDecimal kolicina, String jedinicaMere, BigDecimal jedinicnaCena,
+			BigDecimal vrednost, BigDecimal procenatRabata,
+			BigDecimal iznosRabata, BigDecimal umanjenoZaRabat,
+			BigDecimal ukupanPorez) {
 		super();
 		this.redniBr = redniBr;
 		this.nazivRobeIliUsluge = nazivRobeIliUsluge;

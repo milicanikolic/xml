@@ -75,8 +75,9 @@ import javax.xml.bind.annotation.XmlType;
  */
 
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "stavkaFakture", propOrder = { "redniBr", "nazivRobeIliUsluge", "kolicina", "jedinicaMere",
-		"jedinicnaCena", "vrednost", "procenatRabata", "iznosRabata", "umanjenoZaRabat", "ukupanPorez" })
+@XmlType(name = "stavkaFakture", propOrder = { "redniBr", "nazivRobeIliUsluge",
+		"kolicina", "jedinicaMere", "jedinicnaCena", "vrednost",
+		"procenatRabata", "iznosRabata", "umanjenoZaRabat", "ukupanPorez" })
 public class StavkaFakture {
 
 	@XmlElement(required = true)
@@ -310,9 +311,11 @@ public class StavkaFakture {
 		this.ukupanPorez = value;
 	}
 
-	public StavkaFakture(BigDecimal redniBr, String nazivRobeIliUsluge, BigDecimal kolicina, String jedinicaMere,
-			BigDecimal jedinicnaCena, BigDecimal vrednost, BigDecimal procenatRabata, BigDecimal iznosRabata,
-			BigDecimal umanjenoZaRabat, BigDecimal ukupanPorez) {
+	public StavkaFakture(BigDecimal redniBr, String nazivRobeIliUsluge,
+			BigDecimal kolicina, String jedinicaMere, BigDecimal jedinicnaCena,
+			BigDecimal vrednost, BigDecimal procenatRabata,
+			BigDecimal iznosRabata, BigDecimal umanjenoZaRabat,
+			BigDecimal ukupanPorez) {
 		super();
 		this.redniBr = redniBr;
 		this.nazivRobeIliUsluge = nazivRobeIliUsluge;

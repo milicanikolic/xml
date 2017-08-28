@@ -4,60 +4,71 @@
 <meta charset="UTF-8">
 <title>App</title>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-aria.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.4/angular-material.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-animate.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.4/angular-aria.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.4/angular-material.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.15/angular-ui-router.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/x2js/1.2.0/xml2json.min.js"></script>
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <script src="Bootstrap/js/nya-bs-select.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/css/bootstrap-select.min.css">
 <link rel="stylesheet" href="Bootstrap/css/nya-bs-select.css">
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.12.4/js/bootstrap-select.min.js"></script>
 
 <script src="js/angular.js"></script>
 <script src="js/angular-route.js"></script>
 <script type="text/javascript" src="js/app.js"></script>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
-	<script src="services/loginS.js"></script>
-	<script src="services/fakturaS.js"></script>
-	<script src="services/nalogS.js"></script>
-	<script src="controllers/loginCtrl.js" ></script>
-	<script src="controllers/fakturaCtrl.js" ></script>
-	<script src="controllers/nalogCtrl.js" ></script>
-	
-	<link rel="stylesheet" href="stranice/stil.css">
+<script src="services/loginS.js"></script>
+<script src="services/fakturaS.js"></script>
+<script src="services/nalogS.js"></script>
+<script src="controllers/loginCtrl.js"></script>
+<script src="controllers/fakturaCtrl.js"></script>
+<script src="controllers/nalogCtrl.js"></script>
+
+<link rel="stylesheet" href="stranice/stil.css">
 </head>
 
 <body>
 
 
-<div class="container">
-	<nav class="navbar navbar-inverse" ng-controller='loginCtrl'>
-  		<div class="container-fluid">
-    		<div class="navbar-header">
-      			<a class="navbar-brand" href="">Firma</a>
-    		</div>
-    	<ul class="nav navbar-nav">
-      		<li class="active"><a href="#pocetna">Home</a></li>
-      		<li><a href="#fakture">Fakture</a></li>
-      		<li><a href="#nalogZaPrenos">Nalog</a></li>
-      		<li><a href="#zahtevIzvod">Izvod</a></li>
-      		<li><a href="#kreirajStavku">Kreiraj stavku</a></li>
-      		<li><a href="#naruciStavke">Naruci stavke</a></li>
-   		</ul>
-  		</div>
-	</nav>
-	<div>
-	<ui-view>
+	<div class="container">
+		<nav class="navbar navbar-inverse" ng-controller='loginCtrl'>
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand" href="">Firma</a>
+				</div>
+				<ul class="nav navbar-nav">
+					<li class="active"><a href="#pocetna">Home</a></li>
+					<li><a href="#fakture">Fakture</a></li>
+					<li><a href="#nalogZaPrenos">Nalog</a></li>
+					<li><a href="#zahtevIzvod">Izvod</a></li>
+					<li><a href="#kreirajStavku">Kreiraj stavku</a></li>
+					<li><a href="#naruciStavke">Naruci stavke</a></li>
+				</ul>
+			</div>
+		</nav>
+		<div>
+			<ui-view>
+		</div>
 	</div>
-</div>
 
 </body>
 </html>

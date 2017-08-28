@@ -1,26 +1,21 @@
-.siviWell{
-	
-	margin-top: 200px; 
+.siviWell {
+	margin-top: 200px;
 	height: 220px;
 	background-color: #696969;
-	color:white;
-	border-radius:20px;
+	color: white;
+	border-radius: 20px;
 }
 
-.siviWell1{
-	
+.siviWell1 {
 	background-color: #696969;
-	color:white;
-	border-radius:20px;
+	color: white;
+	border-radius: 20px;
 }
 
-.zutoDugme{
-	
+.zutoDugme {
 	background-color: #FFD700;
 }
 
-.wellGore{
-	
-  top:0;
-  
+.wellGore {
+	top: 0;
 }

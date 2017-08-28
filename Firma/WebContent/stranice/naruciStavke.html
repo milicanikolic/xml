@@ -1,68 +1,40 @@
 <div class="container" ng-controller='fakturaCtrl' ng-init="init();">
 
- <script type="text/javascript">
- //$('select.selectpicker').on('change', function(){
-		//$('select[name=selectStavke]').val("{{stavkeIzabrane}}");
-	 	//$('.selectpicker').selectpicker('refresh');
-	//    var selected = []
-	  //  selected = $('.selectpicker')
-	   // console.log(selected); //Get the multiple values selected in an array
-	 //  console.log(selected.length); //Length of the array
 
-	
-	//});
-	
-	</script>
+	<div class="row">
+		<div class="col-xs-5 col-xs-offset-3">
+			<div class="well siviWell1">
+				<div class="row">
+					<div class="col-xs-7 col-xs-offset-3">
 
- 
- 	<script type="text/javascript"> 
+						<label for="firmaDobavljac">Firma od koje se kupuje:</label> <select
+							class="form-control" ng-model="jednaFirma"
+							ng-options="firma.naziv for firma in firme">
 
- 	//$('select[name=selectStavke]').val(stavkeIzabrane);
- 	//$('.selectpicker').selectpicker('refresh');
- 	</script>
-	
+						</select> <label for="stavke">Izaberite stavke:</label> <select
+							class="selectpicker form-control" name="selectStavke"
+							id="selectStavke" multiple ng-model="stavkeIzabrane"
+							ng-options="stavka.nazivRobeIliUsluge for stavka in jednaFirma.stavke"
+							ng-change="selektovana()">
+
+						</select>
 
 
 
-<div class="row">
-  <div class="col-xs-5 col-xs-offset-3">
-   <div class="well siviWell1">
-    <div class="row">
-     <div class="col-xs-7 col-xs-offset-3">
-     
-        <label for="firmaDobavljac">Firma od koje se kupuje:</label>
-        
-        <select class="form-control" ng-model="jednaFirma" ng-options="firma.naziv for firma in firme">
-      
-         </select> 
-         
-      
-        <label for="stavke">Izaberite stavke:</label>
-        
-         <!--  <all class="nya-bs-select" id="stavkeKupujem" name="stavkeKupujem" ng-model="stavkeIzabrane" ng-click="ispis(jednaFirma);">
-            <li nya-bs-option="stavka in jednaFirma.stavke">{{stavka.nazivRobeIliUsluge}}</li>
-         </all>    
-        -->
-        
-        <select class="selectpicker form-control" name="selectStavke" id="selectStavke" multiple ng-model="stavkeIzabrane" ng-options="stavka.nazivRobeIliUsluge for stavka in jednaFirma.stavke" ng-change="selektovana()">
-      
-         </select> 
-        
-        
-        
-        <div ng-show="izabraneStavke" ng-repeat="k in izabraneStavke">
-        <label for="kol">{{k.nazivRobeIliUsluge}} kolicina:</label>
-        <input class="form-control" id="kol" type="number" min="0" ng-model="k.kolicina" value="" />
-        <br>
-        </div>
-        &nbsp;
-        <a ng-show="izabraneStavke" href="" class="btn zutoDugme pull-down pull-right" ng-click="naruciStavke()" >Naruci stavke</a>
-      	
-      
-     </div>
-    </div>
-   </div>
-  </div>
- </div>
+						<div ng-show="izabraneStavke" ng-repeat="k in izabraneStavke">
+							<label for="kol">{{k.nazivRobeIliUsluge}} kolicina:</label> <input
+								class="form-control" id="kol" type="number" min="0"
+								ng-model="k.kolicina" value="" /> <br>
+						</div>
+						&nbsp; <a ng-show="izabraneStavke" href=""
+							class="btn zutoDugme pull-down pull-right"
+							ng-click="naruciStavke()">Naruci stavke</a>
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 </div>

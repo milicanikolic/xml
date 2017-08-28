@@ -45,6 +45,7 @@ import app.StartApp;
 import faktura.Faktura;
 import faktura.StavkaFakture;
 import faktura.ZaglavljeFakture;
+import wrapper.Firme;
 
 @LocalBean
 @Stateless
@@ -55,10 +56,12 @@ public class FirmaCtrl {
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/{username}/{password}")
-	public Firma login(@PathParam("username") String username, @PathParam("password") String password) {
+	public Firma login(@PathParam("username") String username,
+			@PathParam("password") String password) {
 
-		String upit = "for $x in doc('/content/firma.xml')/firme/firma" + " where $x/username='" + username
-				+ "' and $x/password='" + password + "'" + " return $x";
+		String upit = "for $x in doc('/content/firma.xml')/firme/firma"
+				+ " where $x/username='" + username + "' and $x/password='"
+				+ password + "'" + " return $x";
 		String odgovor = posaljiUpit(upit);
 		if (odgovor == null) {
 			return null;
@@ -66,7 +69,8 @@ public class FirmaCtrl {
 
 		Firma firma = null;
 		try {
-			firma = unmarshaluj(Firma.class, new StreamSource(new StringReader(odgovor)));
+			firma = unmarshaluj(Firma.class, new StreamSource(new StringReader(
+					odgovor)));
 		} catch (JAXBException e) {
 			e.printStackTrace();
 		}
@@ -80,9 +84,10 @@ public class FirmaCtrl {
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Firma> uzmiPreostaleFirme(Firma bezFirme) {
 
-		String upit = "for $x in doc('/content/firma.xml')/firme/firma" +
-		 " where $x/username!='" + bezFirme.getUsername() + "' and $x/password!='" + bezFirme.getPassword() + "'" +
-				" return $x";
+		String upit = "for $x in doc('/content/firma.xml')/firme/firma"
+				+ " where $x/username!='" + bezFirme.getUsername()
+				+ "' and $x/password!='" + bezFirme.getPassword() + "'"
+				+ " return $x";
 
 		ServerEvaluationCall poziv = StartApp.getClient().newServerEval();
 		List<Firma> listaFirmi = new ArrayList<Firma>();
@@ -92,7 +97,8 @@ public class FirmaCtrl {
 			EvalResultIterator it = poziv.xquery(upit).eval();
 			while (it.hasNext()) {
 				EvalResult eval = it.next();
-				Firma firma = (Firma) unmarsaller.unmarshal(new StringReader(eval.getString()));
+				Firma firma = (Firma) unmarsaller.unmarshal(new StringReader(
+						eval.getString()));
 				listaFirmi.add(firma);
 			}
 		} catch (Exception e) {
@@ -102,38 +108,39 @@ public class FirmaCtrl {
 		return listaFirmi;
 
 	}
-	
-	
-	
 
 	@POST
 	@Path("/{kupacUlogovan}/{dobavljacKupujem}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@Produces(MediaType.APPLICATION_XML) // MediaType.APPLICATION_XML) public
-	public Faktura kreirajFakturu(@PathParam("kupacUlogovan") String kupacUlogovan,
-			@PathParam("dobavljacKupujem") String dobavljacKupujem, List<StavkaFirme> stavke) {
+	@Produces(MediaType.APPLICATION_XML)
+	// MediaType.APPLICATION_XML) public
+	public Faktura kreirajFakturu(
+			@PathParam("kupacUlogovan") String kupacUlogovan,
+			@PathParam("dobavljacKupujem") String dobavljacKupujem,
+			List<StavkaFirme> stavke) {
 
-		System.out.println("ssssssssssssssssssssss " +kupacUlogovan + ", " + dobavljacKupujem);
-		
 		Firma dobavljac = null;
-		String upit1 = "for $x in doc('/content/firma.xml')/firme/firma" + " where $x/username='" + dobavljacKupujem
-				+ "'" + " return $x";
+		String upit1 = "for $x in doc('/content/firma.xml')/firme/firma"
+				+ " where $x/username='" + dobavljacKupujem + "'"
+				+ " return $x";
 		String odgovor1 = posaljiUpit(upit1);
 		if (odgovor1 != null) {
 			try {
-				dobavljac = unmarshaluj(Firma.class, new StreamSource(new StringReader(odgovor1)));
+				dobavljac = unmarshaluj(Firma.class, new StreamSource(
+						new StringReader(odgovor1)));
 			} catch (JAXBException e) {
 				e.printStackTrace();
 			}
 		}
 
 		Firma kupac = null;
-		String upit2 = "for $x in doc('/content/firma.xml')/firme/firma" + " where $x/username='" + kupacUlogovan + "'"
-				+ " return $x";
+		String upit2 = "for $x in doc('/content/firma.xml')/firme/firma"
+				+ " where $x/username='" + kupacUlogovan + "'" + " return $x";
 		String odgovor2 = posaljiUpit(upit2);
 		if (odgovor2 != null) {
 			try {
-				kupac = unmarshaluj(Firma.class, new StreamSource(new StringReader(odgovor2)));
+				kupac = unmarshaluj(Firma.class, new StreamSource(
+						new StringReader(odgovor2)));
 			} catch (JAXBException e) {
 				e.printStackTrace();
 			}
@@ -147,12 +154,17 @@ public class FirmaCtrl {
 					if (kupljena.getRedniBr().equals(s.getRedniBr())) {
 						BigDecimal kolicinaProdavca = s.getKolicina();
 						BigDecimal kupujemStavki = kupljena.getKolicina();
-						kolicinaProdavca = kolicinaProdavca.subtract(kupujemStavki);
+						kolicinaProdavca = kolicinaProdavca
+								.subtract(kupujemStavki);
 						s.setKolicina(kolicinaProdavca);
 
 						String upit = "xdmp:node-replace(doc('/content/firma.xml')/firme/firma[username='"
-								+ dobavljac.getUsername() + "']/stavke[redniBr=" + s.getRedniBr()
-								+ "]/kolicina, <kolicina>" + s.getKolicina() + "</kolicina>)";
+								+ dobavljac.getUsername()
+								+ "']/stavke[redniBr="
+								+ s.getRedniBr()
+								+ "]/kolicina, <kolicina>"
+								+ s.getKolicina()
+								+ "</kolicina>)";
 						posaljiUpit(upit);
 					}
 				}
@@ -187,7 +199,8 @@ public class FirmaCtrl {
 				for (StavkaFirme s : dobavljac.getStavke()) {
 					if (sf.getRedniBr().equals(s.getRedniBr())) {
 						System.out.println("ta je");
-						BigDecimal usluga = s.getVrednost().subtract(sf.getJedinicnaCena());
+						BigDecimal usluga = s.getVrednost().subtract(
+								sf.getJedinicnaCena());
 						uslugeUkupno = uslugeUkupno.add(usluga);
 					}
 				}
@@ -228,10 +241,8 @@ public class FirmaCtrl {
 			zaglavljeFakture.setIdPoruke(uid);
 			zaglavljeFakture.setNazivDobavljac(dobavljac.getNaziv());
 			zaglavljeFakture.setAdresaDobavljac(dobavljac.getAdresa());
-			System.out.println("IZ BEKENDAAA PRIMALAC: " + dobavljac.getNaziv());
 			zaglavljeFakture.setPibDobavljac(dobavljac.getPIB());
 			zaglavljeFakture.setNazivKupac(kupac.getNaziv());
-			System.out.println("IZ BEKENDAAA DUZNIKKKKK: " + kupac.getNaziv());
 			zaglavljeFakture.setAdresaKupac(kupac.getAdresa());
 			zaglavljeFakture.setPibKupac(kupac.getPIB());
 			zaglavljeFakture.setBrojRacuna(rand);
@@ -270,8 +281,11 @@ public class FirmaCtrl {
 			try {
 				StringWriter sw = new StringWriter();
 				marshaluj(faktura, sw);
-				String kon = sw.toString().substring(sw.toString().indexOf("faktura") - 1, sw.toString().length());
-				String upit = "xdmp:node-insert-child(doc('/content/faktura.xml')/fakture," + kon + ");";
+				String kon = sw.toString().substring(
+						sw.toString().indexOf("faktura") - 1,
+						sw.toString().length());
+				String upit = "xdmp:node-insert-child(doc('/content/faktura.xml')/fakture,"
+						+ kon + ");";
 				posaljiUpit(upit);
 				System.out.println(kon.toString());
 			} catch (Exception e) {
@@ -283,16 +297,22 @@ public class FirmaCtrl {
 		}
 
 		else {
-			ResteasyClient client = new ResteasyClientBuilder().build();
-			ResteasyWebTarget target = client.target("http://localhost:" + dobavljac.getPort() + "/Firma/rest/firma/"
+		ResteasyClient client = new ResteasyClientBuilder().build();
+			ResteasyWebTarget target = client.target("http://localhost:"
+					+ dobavljac.getPort() + "/Firma/rest/firma/"
 					+ kupacUlogovan + "/" + dobavljacKupujem);
-			Response response = target.request(MediaType.APPLICATION_XML)
-					.post(Entity.entity(stavke, "application/json"));
+			Response response = target.request(MediaType.APPLICATION_XML).post(
+					Entity.entity(stavke, "application/json"));
 			Faktura faktura = response.readEntity(Faktura.class);
+			
+	
+			
+			
 			return faktura;
+	
 		}
 	}
-	
+
 	public String posaljiUpit(String upit) {
 		ServerEvaluationCall poziv = StartApp.getClient().newServerEval();
 		String odgovor = poziv.xquery(upit).evalAs(String.class);
