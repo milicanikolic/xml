@@ -47,20 +47,20 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class Mt910 {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt910", required = true)
     protected String idPoruke;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt910", required = true)
     protected String swiftBanPoverioc;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt910", required = true)
     protected String obracunskiRacBanPoverioc;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt910", required = true)
     protected String idPorukeNaloga;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt910", required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumValute;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt910", required = true)
     protected BigDecimal iznos;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt910", required = true)
     protected String sifraValute;
 
     /**

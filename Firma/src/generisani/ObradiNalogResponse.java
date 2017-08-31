@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ObradiNalogResponse {
 
-    @XmlElement(name = "return", namespace = "")
+    @XmlElement(name = "return")
     protected String _return;
 
     /**

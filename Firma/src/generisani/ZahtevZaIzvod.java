@@ -39,12 +39,12 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class ZahtevZaIzvod {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/zahtev", required = true)
     protected String brojRacuna;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/zahtev", required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datum;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/zahtev", required = true)
     protected BigInteger rbrPreseka;
 
     /**

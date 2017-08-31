@@ -36,9 +36,9 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class Presek {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
     protected ZaglavljePreseka zaglavljePreseka;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
     protected List<StavkaPreseka> stavkaPreseka;
 
     /**

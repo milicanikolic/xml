@@ -32,7 +32,7 @@ import javax.xml.bind.annotation.XmlType;
 })
 public class ObradiZahtevZaIzvodResponse {
 
-    @XmlElement(name = "return", namespace = "")
+    @XmlElement(name = "return")
     protected Presek _return;
 
     /**

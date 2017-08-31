@@ -52,22 +52,24 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class ZaglavljePreseka {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
     protected String brojRacuna;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumNaloga;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
     protected BigInteger brojPreseka;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
     protected BigDecimal prethodnoStanje;
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek")
     protected int brPromenaUKorist;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
     protected BigDecimal ukupnoUKorist;
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek")
     protected int brPromenaNaTeret;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
     protected BigDecimal ukupnoNaTeret;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
     protected BigDecimal novoStanje;
 
     /**

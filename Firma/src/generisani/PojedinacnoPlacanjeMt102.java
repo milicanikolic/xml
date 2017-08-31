@@ -12,28 +12,28 @@ import javax.xml.datatype.XMLGregorianCalendar;
 
 
 /**
- * <p>Java class for stavkaPreseka complex type.
+ * <p>Java class for pojedinacnoPlacanjeMt102 complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="stavkaPreseka">
+ * &lt;complexType name="pojedinacnoPlacanjeMt102">
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
+ *         &lt;element name="idNaloga" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="duznik" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="svrhaPlacanja" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="primalac" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="datumNaloga" type="{http://www.w3.org/2001/XMLSchema}date"/>
- *         &lt;element name="datumValute" type="{http://www.w3.org/2001/XMLSchema}date"/>
- *         &lt;element name="racunDuznika" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="racunDuznik" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="modelZaduzenja" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *         &lt;element name="pozivNaBrZaduzenja" type="{http://www.w3.org/2001/XMLSchema}string"/>
- *         &lt;element name="racunPrimaoca" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="racunPoverioc" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="modelOdobrenja" type="{http://www.w3.org/2001/XMLSchema}integer"/>
  *         &lt;element name="pozivNaBrOdobrenja" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *         &lt;element name="iznos" type="{http://www.w3.org/2001/XMLSchema}decimal"/>
- *         &lt;element name="smer" type="{http://www.w3.org/2001/XMLSchema}string"/>
+ *         &lt;element name="sifraValute" type="{http://www.w3.org/2001/XMLSchema}string"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,51 +43,74 @@ import javax.xml.datatype.XMLGregorianCalendar;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "stavkaPreseka", namespace = "http://ftn.uns.ac.rs/presek", propOrder = {
+@XmlType(name = "pojedinacnoPlacanjeMt102", propOrder = {
+    "idNaloga",
     "duznik",
     "svrhaPlacanja",
     "primalac",
     "datumNaloga",
-    "datumValute",
-    "racunDuznika",
+    "racunDuznik",
     "modelZaduzenja",
     "pozivNaBrZaduzenja",
-    "racunPrimaoca",
+    "racunPoverioc",
     "modelOdobrenja",
     "pozivNaBrOdobrenja",
     "iznos",
-    "smer"
+    "sifraValute"
 })
-public class StavkaPreseka {
+public class PojedinacnoPlacanjeMt102 {
 
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
+    @XmlElement(required = true)
+    protected String idNaloga;
+    @XmlElement(required = true)
     protected String duznik;
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
+    @XmlElement(required = true)
     protected String svrhaPlacanja;
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
+    @XmlElement(required = true)
     protected String primalac;
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
+    @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumNaloga;
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
-    @XmlSchemaType(name = "date")
-    protected XMLGregorianCalendar datumValute;
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
-    protected String racunDuznika;
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
+    @XmlElement(required = true)
+    protected String racunDuznik;
+    @XmlElement(required = true)
     protected BigInteger modelZaduzenja;
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
+    @XmlElement(required = true)
     protected String pozivNaBrZaduzenja;
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
-    protected String racunPrimaoca;
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
+    @XmlElement(required = true)
+    protected String racunPoverioc;
+    @XmlElement(required = true)
     protected BigInteger modelOdobrenja;
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
+    @XmlElement(required = true)
     protected String pozivNaBrOdobrenja;
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
+    @XmlElement(required = true)
     protected BigDecimal iznos;
-    @XmlElement(namespace = "http://ftn.uns.ac.rs/presek", required = true)
-    protected String smer;
+    @XmlElement(required = true)
+    protected String sifraValute;
+
+    /**
+     * Gets the value of the idNaloga property.
+     * 
+     * @return
+     *     possible object is
+     *     {@link String }
+     *     
+     */
+    public String getIdNaloga() {
+        return idNaloga;
+    }
+
+    /**
+     * Sets the value of the idNaloga property.
+     * 
+     * @param value
+     *     allowed object is
+     *     {@link String }
+     *     
+     */
+    public void setIdNaloga(String value) {
+        this.idNaloga = value;
+    }
 
     /**
      * Gets the value of the duznik property.
@@ -186,51 +209,27 @@ public class StavkaPreseka {
     }
 
     /**
-     * Gets the value of the datumValute property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public XMLGregorianCalendar getDatumValute() {
-        return datumValute;
-    }
-
-    /**
-     * Sets the value of the datumValute property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link XMLGregorianCalendar }
-     *     
-     */
-    public void setDatumValute(XMLGregorianCalendar value) {
-        this.datumValute = value;
-    }
-
-    /**
-     * Gets the value of the racunDuznika property.
+     * Gets the value of the racunDuznik property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getRacunDuznika() {
-        return racunDuznika;
+    public String getRacunDuznik() {
+        return racunDuznik;
     }
 
     /**
-     * Sets the value of the racunDuznika property.
+     * Sets the value of the racunDuznik property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setRacunDuznika(String value) {
-        this.racunDuznika = value;
+    public void setRacunDuznik(String value) {
+        this.racunDuznik = value;
     }
 
     /**
@@ -282,27 +281,27 @@ public class StavkaPreseka {
     }
 
     /**
-     * Gets the value of the racunPrimaoca property.
+     * Gets the value of the racunPoverioc property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getRacunPrimaoca() {
-        return racunPrimaoca;
+    public String getRacunPoverioc() {
+        return racunPoverioc;
     }
 
     /**
-     * Sets the value of the racunPrimaoca property.
+     * Sets the value of the racunPoverioc property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setRacunPrimaoca(String value) {
-        this.racunPrimaoca = value;
+    public void setRacunPoverioc(String value) {
+        this.racunPoverioc = value;
     }
 
     /**
@@ -378,27 +377,27 @@ public class StavkaPreseka {
     }
 
     /**
-     * Gets the value of the smer property.
+     * Gets the value of the sifraValute property.
      * 
      * @return
      *     possible object is
      *     {@link String }
      *     
      */
-    public String getSmer() {
-        return smer;
+    public String getSifraValute() {
+        return sifraValute;
     }
 
     /**
-     * Sets the value of the smer property.
+     * Sets the value of the sifraValute property.
      * 
      * @param value
      *     allowed object is
      *     {@link String }
      *     
      */
-    public void setSmer(String value) {
-        this.smer = value;
+    public void setSifraValute(String value) {
+        this.sifraValute = value;
     }
 
 }

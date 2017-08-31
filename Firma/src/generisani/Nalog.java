@@ -64,36 +64,37 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class Nalog {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     protected String idPoruke;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     protected String duznik;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     protected String svrhaPlacanja;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     protected String primalac;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumNaloga;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumValute;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     protected String racunDuznik;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     protected BigInteger modelZaduzenja;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     protected String pozivNaBrZaduzenja;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     protected String racunPoverioca;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     protected BigInteger modelOdobrenja;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     protected String pozivNaBrOdobrenja;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     protected BigDecimal iznos;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog", required = true)
     protected String oznakaValute;
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/nalog")
     protected boolean hitno;
 
     /**

@@ -70,43 +70,43 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class Mt103 {
 
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String idPoruke;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String swiftBanDuznik;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String obracunskiRacBankeDuznik;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String obracunskiRacunBankePoverioca;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String swiftBanPoverioc;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String duznik;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String svrhaPlacanja;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String primalac;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumNaloga;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumValute;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String racunDuznik;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected BigInteger modelZaduzenja;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String pozivNaBrojZaduzenja;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String racunPoverioca;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected BigInteger modelOdobrenja;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String pozivNaBrOdobrenja;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected BigDecimal iznos;
-    @XmlElement(namespace = "", required = true)
+    @XmlElement(required = true)
     protected String sifraValute;
 
     /**

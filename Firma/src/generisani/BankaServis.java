@@ -26,33 +26,6 @@ public interface BankaServis {
 
     /**
      * 
-     * @param zahtevZaIzvod
-     * @return
-     *     returns generisani.Presek
-     */
-    @WebMethod
-    @WebResult(targetNamespace = "")
-    @RequestWrapper(localName = "obradiZahtevZaIzvod", targetNamespace = "http://ftn.uns.ac.rs/banka", className = "generisani.ObradiZahtevZaIzvod")
-    @ResponseWrapper(localName = "obradiZahtevZaIzvodResponse", targetNamespace = "http://ftn.uns.ac.rs/banka", className = "generisani.ObradiZahtevZaIzvodResponse")
-    @Action(input = "http://ftn.uns.ac.rs/banka/BankaServis/obradiZahtevZaIzvodRequest", output = "http://ftn.uns.ac.rs/banka/BankaServis/obradiZahtevZaIzvodResponse")
-    public Presek obradiZahtevZaIzvod(
-        @WebParam(name = "zahtevZaIzvod", targetNamespace = "http://ftn.uns.ac.rs/zahtev")
-        ZahtevZaIzvod zahtevZaIzvod);
-
-    /**
-     * 
-     * @param mt103I910
-     */
-    @WebMethod
-    @RequestWrapper(localName = "odobriSredstva", targetNamespace = "http://ftn.uns.ac.rs/banka", className = "generisani.OdobriSredstva")
-    @ResponseWrapper(localName = "odobriSredstvaResponse", targetNamespace = "http://ftn.uns.ac.rs/banka", className = "generisani.OdobriSredstvaResponse")
-    @Action(input = "http://ftn.uns.ac.rs/banka/BankaServis/odobriSredstvaRequest", output = "http://ftn.uns.ac.rs/banka/BankaServis/odobriSredstvaResponse")
-    public void odobriSredstva(
-        @WebParam(name = "MT103i910", targetNamespace = "http://ftn.uns.ac.rs/mt103i910")
-        MT103I910 mt103I910);
-
-    /**
-     * 
      * @param nalog
      * @return
      *     returns java.lang.String
@@ -77,5 +50,44 @@ public interface BankaServis {
     public void primiMt900(
         @WebParam(name = "mt900", targetNamespace = "http://ftn.uns.ac.rs/mt900")
         Mt900 mt900);
+
+    /**
+     * 
+     * @param mt103I910
+     */
+    @WebMethod
+    @RequestWrapper(localName = "odobriSredstva", targetNamespace = "http://ftn.uns.ac.rs/banka", className = "generisani.OdobriSredstva")
+    @ResponseWrapper(localName = "odobriSredstvaResponse", targetNamespace = "http://ftn.uns.ac.rs/banka", className = "generisani.OdobriSredstvaResponse")
+    @Action(input = "http://ftn.uns.ac.rs/banka/BankaServis/odobriSredstvaRequest", output = "http://ftn.uns.ac.rs/banka/BankaServis/odobriSredstvaResponse")
+    public void odobriSredstva(
+        @WebParam(name = "MT103i910", targetNamespace = "http://ftn.uns.ac.rs/mt103i910")
+        MT103I910 mt103I910);
+
+    /**
+     * 
+     * @param zahtevZaIzvod
+     * @return
+     *     returns generisani.Presek
+     */
+    @WebMethod
+    @WebResult(targetNamespace = "")
+    @RequestWrapper(localName = "obradiZahtevZaIzvod", targetNamespace = "http://ftn.uns.ac.rs/banka", className = "generisani.ObradiZahtevZaIzvod")
+    @ResponseWrapper(localName = "obradiZahtevZaIzvodResponse", targetNamespace = "http://ftn.uns.ac.rs/banka", className = "generisani.ObradiZahtevZaIzvodResponse")
+    @Action(input = "http://ftn.uns.ac.rs/banka/BankaServis/obradiZahtevZaIzvodRequest", output = "http://ftn.uns.ac.rs/banka/BankaServis/obradiZahtevZaIzvodResponse")
+    public Presek obradiZahtevZaIzvod(
+        @WebParam(name = "zahtevZaIzvod", targetNamespace = "http://ftn.uns.ac.rs/zahtev")
+        ZahtevZaIzvod zahtevZaIzvod);
+
+    /**
+     * 
+     * @param mt102I910
+     */
+    @WebMethod(operationName = "primiMt102i910")
+    @RequestWrapper(localName = "primiMt102i910", targetNamespace = "http://ftn.uns.ac.rs/banka", className = "generisani.PrimiMt102I910")
+    @ResponseWrapper(localName = "primiMt102i910Response", targetNamespace = "http://ftn.uns.ac.rs/banka", className = "generisani.PrimiMt102I910Response")
+    @Action(input = "http://ftn.uns.ac.rs/banka/BankaServis/primiMt102i910Request", output = "http://ftn.uns.ac.rs/banka/BankaServis/primiMt102i910Response")
+    public void primiMt102I910(
+        @WebParam(name = "MT102i910", targetNamespace = "http://ftn.uns.ac.rs/mt102i910")
+        MT102I910 mt102I910);
 
 }

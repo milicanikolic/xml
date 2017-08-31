@@ -47,20 +47,20 @@ import javax.xml.datatype.XMLGregorianCalendar;
 })
 public class Mt900 {
 
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt900", required = true)
     protected String idPoruke;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt900", required = true)
     protected String swiftBanDuznik;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt900", required = true)
     protected String obracunskiRacBanDuznik;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt900", required = true)
     protected String idPorukeNaloga;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt900", required = true)
     @XmlSchemaType(name = "date")
     protected XMLGregorianCalendar datumValute;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt900", required = true)
     protected BigDecimal iznos;
-    @XmlElement(required = true)
+    @XmlElement(namespace = "http://ftn.uns.ac.rs/mt900", required = true)
     protected String sifraValute;
 
     /**

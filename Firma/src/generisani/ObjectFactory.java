@@ -24,16 +24,19 @@ import javax.xml.namespace.QName;
 @XmlRegistry
 public class ObjectFactory {
 
+    private final static QName _Mt102_QNAME = new QName("http://ftn.uns.ac.rs/banka", "mt102");
     private final static QName _Mt103_QNAME = new QName("http://ftn.uns.ac.rs/banka", "mt103");
-    private final static QName _OdobriSredstvaResponse_QNAME = new QName("http://ftn.uns.ac.rs/banka", "odobriSredstvaResponse");
-    private final static QName _Mt900_QNAME = new QName("http://ftn.uns.ac.rs/mt900", "mt900");
     private final static QName _ObradiZahtevZaIzvod_QNAME = new QName("http://ftn.uns.ac.rs/banka", "obradiZahtevZaIzvod");
-    private final static QName _PrimiMt900_QNAME = new QName("http://ftn.uns.ac.rs/banka", "primiMt900");
     private final static QName _ObradiZahtevZaIzvodResponse_QNAME = new QName("http://ftn.uns.ac.rs/banka", "obradiZahtevZaIzvodResponse");
     private final static QName _ObradiNalogResponse_QNAME = new QName("http://ftn.uns.ac.rs/banka", "obradiNalogResponse");
+    private final static QName _PrimiMt102I910_QNAME = new QName("http://ftn.uns.ac.rs/banka", "primiMt102i910");
     private final static QName _PrimiMt900Response_QNAME = new QName("http://ftn.uns.ac.rs/banka", "primiMt900Response");
     private final static QName _ZahtevZaIzvod_QNAME = new QName("http://ftn.uns.ac.rs/zahtev", "zahtevZaIzvod");
     private final static QName _Nalog_QNAME = new QName("http://ftn.uns.ac.rs/nalog", "nalog");
+    private final static QName _OdobriSredstvaResponse_QNAME = new QName("http://ftn.uns.ac.rs/banka", "odobriSredstvaResponse");
+    private final static QName _Mt900_QNAME = new QName("http://ftn.uns.ac.rs/mt900", "mt900");
+    private final static QName _PrimiMt102I910Response_QNAME = new QName("http://ftn.uns.ac.rs/banka", "primiMt102i910Response");
+    private final static QName _PrimiMt900_QNAME = new QName("http://ftn.uns.ac.rs/banka", "primiMt900");
     private final static QName _OdobriSredstva_QNAME = new QName("http://ftn.uns.ac.rs/banka", "odobriSredstva");
     private final static QName _ObradiNalog_QNAME = new QName("http://ftn.uns.ac.rs/nalog", "obradiNalog");
 
@@ -125,6 +128,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PrimiMt102I910Response }
+     * 
+     */
+    public PrimiMt102I910Response createPrimiMt102I910Response() {
+        return new PrimiMt102I910Response();
+    }
+
+    /**
      * Create an instance of {@link ObradiZahtevZaIzvod }
      * 
      */
@@ -149,6 +160,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link Mt102 }
+     * 
+     */
+    public Mt102 createMt102() {
+        return new Mt102();
+    }
+
+    /**
      * Create an instance of {@link OdobriSredstva }
      * 
      */
@@ -165,6 +184,14 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link PrimiMt102I910 }
+     * 
+     */
+    public PrimiMt102I910 createPrimiMt102I910() {
+        return new PrimiMt102I910();
+    }
+
+    /**
      * Create an instance of {@link ObradiNalogResponse }
      * 
      */
@@ -173,11 +200,44 @@ public class ObjectFactory {
     }
 
     /**
+     * Create an instance of {@link ZaglavljeMt102 }
+     * 
+     */
+    public ZaglavljeMt102 createZaglavljeMt102() {
+        return new ZaglavljeMt102();
+    }
+
+    /**
+     * Create an instance of {@link PojedinacnoPlacanjeMt102 }
+     * 
+     */
+    public PojedinacnoPlacanjeMt102 createPojedinacnoPlacanjeMt102() {
+        return new PojedinacnoPlacanjeMt102();
+    }
+
+    /**
+     * Create an instance of {@link MT102I910 }
+     * 
+     */
+    public MT102I910 createMT102I910() {
+        return new MT102I910();
+    }
+
+    /**
      * Create an instance of {@link Mt900 }
      * 
      */
     public Mt900 createMt900() {
         return new Mt900();
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Mt102 }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/banka", name = "mt102")
+    public JAXBElement<Mt102> createMt102(Mt102 value) {
+        return new JAXBElement<Mt102>(_Mt102_QNAME, Mt102 .class, null, value);
     }
 
     /**
@@ -190,39 +250,12 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link OdobriSredstvaResponse }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/banka", name = "odobriSredstvaResponse")
-    public JAXBElement<OdobriSredstvaResponse> createOdobriSredstvaResponse(OdobriSredstvaResponse value) {
-        return new JAXBElement<OdobriSredstvaResponse>(_OdobriSredstvaResponse_QNAME, OdobriSredstvaResponse.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link Mt900 }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/mt900", name = "mt900")
-    public JAXBElement<Mt900> createMt900(Mt900 value) {
-        return new JAXBElement<Mt900>(_Mt900_QNAME, Mt900 .class, null, value);
-    }
-
-    /**
      * Create an instance of {@link JAXBElement }{@code <}{@link ObradiZahtevZaIzvod }{@code >}}
      * 
      */
     @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/banka", name = "obradiZahtevZaIzvod")
     public JAXBElement<ObradiZahtevZaIzvod> createObradiZahtevZaIzvod(ObradiZahtevZaIzvod value) {
         return new JAXBElement<ObradiZahtevZaIzvod>(_ObradiZahtevZaIzvod_QNAME, ObradiZahtevZaIzvod.class, null, value);
-    }
-
-    /**
-     * Create an instance of {@link JAXBElement }{@code <}{@link PrimiMt900 }{@code >}}
-     * 
-     */
-    @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/banka", name = "primiMt900")
-    public JAXBElement<PrimiMt900> createPrimiMt900(PrimiMt900 value) {
-        return new JAXBElement<PrimiMt900>(_PrimiMt900_QNAME, PrimiMt900 .class, null, value);
     }
 
     /**
@@ -241,6 +274,15 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/banka", name = "obradiNalogResponse")
     public JAXBElement<ObradiNalogResponse> createObradiNalogResponse(ObradiNalogResponse value) {
         return new JAXBElement<ObradiNalogResponse>(_ObradiNalogResponse_QNAME, ObradiNalogResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PrimiMt102I910 }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/banka", name = "primiMt102i910")
+    public JAXBElement<PrimiMt102I910> createPrimiMt102I910(PrimiMt102I910 value) {
+        return new JAXBElement<PrimiMt102I910>(_PrimiMt102I910_QNAME, PrimiMt102I910 .class, null, value);
     }
 
     /**
@@ -268,6 +310,42 @@ public class ObjectFactory {
     @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/nalog", name = "nalog")
     public JAXBElement<Nalog> createNalog(Nalog value) {
         return new JAXBElement<Nalog>(_Nalog_QNAME, Nalog.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link OdobriSredstvaResponse }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/banka", name = "odobriSredstvaResponse")
+    public JAXBElement<OdobriSredstvaResponse> createOdobriSredstvaResponse(OdobriSredstvaResponse value) {
+        return new JAXBElement<OdobriSredstvaResponse>(_OdobriSredstvaResponse_QNAME, OdobriSredstvaResponse.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link Mt900 }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/mt900", name = "mt900")
+    public JAXBElement<Mt900> createMt900(Mt900 value) {
+        return new JAXBElement<Mt900>(_Mt900_QNAME, Mt900 .class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PrimiMt102I910Response }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/banka", name = "primiMt102i910Response")
+    public JAXBElement<PrimiMt102I910Response> createPrimiMt102I910Response(PrimiMt102I910Response value) {
+        return new JAXBElement<PrimiMt102I910Response>(_PrimiMt102I910Response_QNAME, PrimiMt102I910Response.class, null, value);
+    }
+
+    /**
+     * Create an instance of {@link JAXBElement }{@code <}{@link PrimiMt900 }{@code >}}
+     * 
+     */
+    @XmlElementDecl(namespace = "http://ftn.uns.ac.rs/banka", name = "primiMt900")
+    public JAXBElement<PrimiMt900> createPrimiMt900(PrimiMt900 value) {
+        return new JAXBElement<PrimiMt900>(_PrimiMt900_QNAME, PrimiMt900 .class, null, value);
     }
 
     /**
