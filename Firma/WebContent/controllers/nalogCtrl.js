@@ -2,6 +2,7 @@ app.controller('nalogCtrl', function($scope, $window, $rootScope, nalogS) {
 
 	$scope.init = function() {
 		$scope.ulogovanaFirma = $rootScope.firmaUlogovana;
+		$scope.jednaFirma = $rootScope.jednaFirma;
 		$scope.uzmiSveFakture();
 		$("#myModal2").hide();
 
@@ -26,8 +27,9 @@ app.controller('nalogCtrl', function($scope, $window, $rootScope, nalogS) {
 		var today = new Date();
 		nalog.idPoruke = faktura.zaglavljeFakture.idPoruke;
 		nalog.duznik = faktura.zaglavljeFakture.nazivKupac;
+		
 		nalog.svrhaPlacanja = "SVRHA PLACANJA";
-		nalog.primalac = faktura.zaglavljeFakture.nazivDobavljac;
+		nalog.primalac =  faktura.zaglavljeFakture.nazivDobavljac;
 		nalog.datumNaloga = today;
 		nalog.datumValute = faktura.zaglavljeFakture.datumValute;
 		nalog.racunDuznik = $scope.ulogovanaFirma.brojRacuna;
@@ -52,6 +54,10 @@ app.controller('nalogCtrl', function($scope, $window, $rootScope, nalogS) {
 	}
 
 	$scope.posaljiNalog = function(nalog) {
+		nalog.duznik = $scope.ulogovanaFirma.username;
+		console.log("duznik nalog " + nalog.duznik);
+		nalog.primalac = $scope.jednaFirma.username;
+		console.log("prim nalog " + nalog.primalac);
 		console.log(nalog);
 		nalogS.posaljiNalog(nalog).then(function(response) {
 			$scope.obavestenje().then(function() {

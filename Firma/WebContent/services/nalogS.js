@@ -8,6 +8,7 @@ app.factory('nalogS', [ '$http', function($http, $scope) {
 	}
 
 	nalogService.posaljiNalog = function(nalog) {
+		
 		return $http.post('/Firma/rest/nalog', nalog);
 	}
 

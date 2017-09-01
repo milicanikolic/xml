@@ -28,7 +28,7 @@ public class NalogCtrl {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	public void kreirajNalog(Nalog nalog) {
-		System.out.println("Usao u nalog " + nalog.getDuznik());
+		System.out.println("Usao u nalog " + nalog.getDuznik() + nalog.getPrimalac());
 
 		XMLGregorianCalendar now = null;
 		GregorianCalendar gc = new GregorianCalendar();

@@ -25,6 +25,7 @@ app.controller('fakturaCtrl', function($scope, $window, $rootScope, fakturaS) {
 					}
 
 					$scope.naruciStavke = function() {
+						$rootScope.jednaFirma=$scope.jednaFirma;
 						fakturaS
 								.naruciStavke($scope.izabraneStavke,
 										$rootScope.firmaUlogovana.username,
