@@ -7,6 +7,14 @@ app.factory('fakturaS', [
 			fakturaService.uzmiFirme = function(firmaUlogovana) {
 				return $http.post('/Firma/rest/firma', firmaUlogovana);
 			}
+			
+			
+			fakturaService.pdf = function(brFakture) {
+				return $http.post('/Firma/rest/faktura',brFakture);
+			}
+			
+			
+			
 
 			fakturaService.naruciStavke = function(listaStavki, ulogovan,
 					izabrana) {

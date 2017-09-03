@@ -39,5 +39,9 @@ app.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'stranice/faktura.html',
 		controller : 'fakturaCtrl'
 	})
-
+	$stateProvider.state('presek', {
+		url : '/presek',
+		templateUrl : 'stranice/presek.html',
+		controller : 'zahtevCtrl'
+	})
 });

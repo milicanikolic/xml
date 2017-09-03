@@ -31,7 +31,7 @@ app.controller('nalogCtrl', function($scope, $window, $rootScope, nalogS) {
 		nalog.svrhaPlacanja = "SVRHA PLACANJA";
 		nalog.primalac =  faktura.zaglavljeFakture.nazivDobavljac;
 		nalog.datumNaloga = today;
-		nalog.datumValute = faktura.zaglavljeFakture.datumValute;
+		nalog.datumValute = today;
 		nalog.racunDuznik = $scope.ulogovanaFirma.brojRacuna;
 		nalog.modelZaduzenja = 11;
 		nalog.pozivNaBrZaduzenja = 1111;
@@ -47,7 +47,7 @@ app.controller('nalogCtrl', function($scope, $window, $rootScope, nalogS) {
 
 	$scope.obavestenje = function() {
 		$("#myModal2").show();
-		$("#myModal2").fadeTo(3000, 500).slideUp(500, function() {
+		$("#myModal2").fadeTo(2000, 500).slideUp(500, function() {
 			$("#myModal2").slideUp(500);
 		});
 

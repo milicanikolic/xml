@@ -1,4 +1,4 @@
-app.controller('fakturaCtrl', function($scope, $window, $rootScope, fakturaS) {
+app.controller('fakturaCtrl', function($scope, $window, $rootScope, fakturaS,nalogS) {
 
 					$scope.$watch(function() {
 						$('.selectpicker').selectpicker('refresh')
@@ -23,6 +23,26 @@ app.controller('fakturaCtrl', function($scope, $window, $rootScope, fakturaS) {
 									console.log($scope.firme);
 								})
 					}
+					
+					
+					
+					
+					
+					
+					
+					$scope.pdf = function(brFakture) {
+						console.log('brFakture ' + brFakture)
+						fakturaS.pdf(brFakture).then(
+								function(response) {
+								
+									console.log("nesto");
+								})
+					}
+					
+					
+					
+					
+					
 
 					$scope.naruciStavke = function() {
 						$rootScope.jednaFirma=$scope.jednaFirma;
@@ -53,7 +73,15 @@ app.controller('fakturaCtrl', function($scope, $window, $rootScope, fakturaS) {
 					}
 
 					$scope.dobaviFakture = function() {
-						$scope.faktura = $rootScope.faktura;
-						$scope.stavkeFakture = $rootScope.stavkeFakture;
+						$scope.ulogovanaFirma=$rootScope.firmaUlogovana;
+						nalogS.uzmiSveFakture($scope.ulogovanaFirma.PIB)
+
+						.then(function(response) {
+							$scope.fakture = response.data;
+							console.log($scope.fakture);
+						})
+					//	$scope.faktura = $rootScope.faktura;
+					//	$scope.stavkeFakture = $rootScope.stavkeFakture;
+						
 					}
 				})

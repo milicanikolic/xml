@@ -1,6 +1,7 @@
 <div class="container" ng-controller="fakturaCtrl"
 	ng-init="dobaviFakture()">
-	<div class="row">
+	
+	<div class="row" ng-repeat="f in fakture">
 		<div class="col-xs-10 col-xs-offset-1">
 			<div class="well">
 				<div class="row">
@@ -11,15 +12,15 @@
 							<table class="table">
 								<tr>
 									<td>Naziv dobavljaca :</td>
-									<td>{{faktura.faktura.zaglavljeFakture.nazivDobavljac}}</td>
+									<td>{{f.zaglavljeFakture.nazivDobavljac}}</td>
 								</tr>
 								<tr>
 									<td>Adresa dobavljaca :</td>
-									<td>{{faktura.faktura.zaglavljeFakture.adresaDobavljac}}</td>
+									<td>{{f.zaglavljeFakture.adresaDobavljac}}</td>
 								</tr>
 								<tr>
 									<td>PIB dobavljaca :</td>
-									<td>{{faktura.faktura.zaglavljeFakture.pibDobavljac}}</td>
+									<td>{{f.zaglavljeFakture.pibDobavljac}}</td>
 								</tr>
 							</table>
 						</div>
@@ -32,15 +33,15 @@
 							<table class="table">
 								<tr>
 									<td>Naziv kupca:</td>
-									<td>{{faktura.faktura.zaglavljeFakture.nazivKupac}}</td>
+									<td>{{f.zaglavljeFakture.nazivKupac}}</td>
 								</tr>
 								<tr>
 									<td>Adresa kupca:</td>
-									<td>{{faktura.faktura.zaglavljeFakture.adresaKupac}}</td>
+									<td>{{f.zaglavljeFakture.adresaKupac}}</td>
 								</tr>
 								<tr>
 									<td>PIB kupca:</td>
-									<td>{{faktura.faktura.zaglavljeFakture.pibKupac}}</td>
+									<td>{{f.zaglavljeFakture.pibKupac}}</td>
 								</tr>
 							</table>
 						</div>
@@ -60,11 +61,11 @@
 								<td style="vertical-align: middle;">Broj &nbsp;</td>
 								<td><input type="text" readonly="readonly"
 									class="form-control input-sm"
-									value="{{faktura.faktura.zaglavljeFakture.brojRacuna}}" /></td>
+									value="{{f.zaglavljeFakture.brojRacuna}}" /></td>
 								<td style="vertical-align: middle;">,dana &nbsp;</td>
 								<td><input type="text" readonly="readonly"
 									class="form-control input-sm"
-									value="{{faktura.faktura.zaglavljeFakture.datumRacuna| date:'dd-MM-yyyy'}}" /></td>
+									value="{{f.zaglavljeFakture.datumRacuna| date:'dd-MM-yyyy'}}" /></td>
 							</tr>
 						</table>
 					</div>
@@ -77,31 +78,31 @@
 								<td>Vrednost robe:</td>
 								<td><input type="text" readonly="readonly"
 									class="form-control input-sm"
-									value="{{faktura.faktura.zaglavljeFakture.vrednostRobe}}" /></td>
+									value="{{f.zaglavljeFakture.vrednostRobe}}" /></td>
 							</tr>
 							<tr>
 								<td>Vrednost usluga:</td>
 								<td><input type="text" readonly="readonly"
 									class="form-control input-sm"
-									value="{{faktura.faktura.zaglavljeFakture.vrednostUsluga}}" /></td>
+									value="{{f.zaglavljeFakture.vrednostUsluga}}" /></td>
 							</tr>
 							<tr>
 								<td>Ukupno robe i usluga:</td>
 								<td><input type="text" readonly="readonly"
 									class="form-control input-sm"
-									value="{{faktura.faktura.zaglavljeFakture.ukupnoRobaIUsluge}}" /></td>
+									value="{{f.zaglavljeFakture.ukupnoRobaIUsluge}}" /></td>
 							</tr>
 							<tr>
 								<td>Ukupan rabat:</td>
 								<td><input type="text" readonly="readonly"
 									class="form-control input-sm"
-									value="{{faktura.faktura.zaglavljeFakture.ukupanRabat}}" /></td>
+									value="{{f.zaglavljeFakture.ukupanRabat}}" /></td>
 							</tr>
 							<tr>
 								<td>Ukupan porez:</td>
 								<td><input type="text" readonly="readonly"
 									class="form-control input-sm"
-									value="{{faktura.faktura.zaglavljeFakture.ukupanPorez}}" /></td>
+									value="{{f.zaglavljeFakture.ukupanPorez}}" /></td>
 							</tr>
 						</table>
 					</div>
@@ -111,25 +112,25 @@
 								<td>Oznaka valute:</td>
 								<td><input type="text" readonly="readonly"
 									class="form-control input-sm"
-									value="{{faktura.faktura.zaglavljeFakture.valuta}}" /></td>
+									value="{{f.zaglavljeFakture.valuta}}" /></td>
 							</tr>
 							<tr>
 								<td>Iznos za uplatu:</td>
 								<td><input type="text" readonly="readonly"
 									class="form-control input-sm"
-									value="{{faktura.faktura.zaglavljeFakture.iznosZaUplatu}}" /></td>
+									value="{{f.zaglavljeFakture.iznosZaUplatu}}" /></td>
 							</tr>
 							<tr>
 								<td>Uplata na racun:</td>
 								<td><input type="text" readonly="readonly"
 									class="form-control input-sm"
-									value="{{faktura.faktura.zaglavljeFakture.uplataNaRacun}}" /></td>
+									value="{{f.zaglavljeFakture.uplataNaRacun}}" /></td>
 							</tr>
 							<tr>
 								<td>Datum valute:</td>
 								<td><input type="text" readonly="readonly"
 									class="form-control input-sm"
-									value="{{faktura.faktura.zaglavljeFakture.datumValute | date:'dd-MM-yyyy'}}" /></td>
+									value="{{f.zaglavljeFakture.datumValute | date:'dd-MM-yyyy'}}" /></td>
 							</tr>
 						</table>
 					</div>
@@ -159,7 +160,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr ng-repeat="stavka in stavkeFakture">
+						<tr ng-repeat="stavka in f.stavkaFakture">
 							<td><input class="form-control input-sm" type="text"
 								readonly="readonly" value="{{stavka.redniBr}}" /></td>
 							<td><input class="form-control input-sm" type="text"
@@ -183,6 +184,21 @@
 						</tr>
 					</tbody>
 				</table>
+
+
+<!-- za PDF -->
+
+				
+				<div class="modal-footer">
+							<button type="button" class="btn zutoDugme" data-dismiss="modal"
+								ng-click="pdf(f.zaglavljeFakture.idPoruke)">Preuzmi PDF</button>
+						</div>
+
+
+
+
+
+
 
 			</div>
 

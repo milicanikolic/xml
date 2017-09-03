@@ -22,7 +22,7 @@ public class ZahtevIzvodCtrl {
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
-	public void posaljiZahtev(ZahtevZaIzvod zahtev){
+	public Presek posaljiZahtev(ZahtevZaIzvod zahtev){
 		System.out.println("zahtev za izvod: "+zahtev.getBrojRacuna());
 		
 		Presek presek=PozivServisa.posaljiZahtev(zahtev);
@@ -35,6 +35,7 @@ public class ZahtevIzvodCtrl {
 		else {
 			System.out.println("PRESEK NULL");
 		}
-		
+	
+		return presek;
 	}
 }
