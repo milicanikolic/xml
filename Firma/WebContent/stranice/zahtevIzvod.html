@@ -1,23 +1,20 @@
 
 <!--************** NOVA STRANIICA ZAHTEV ZA ZAHTEV IZVODA **************-->
 
-<div class="container">
+<div class="container" ng-controller="zahtevCtrl" ng-init="init()">
 	<div class="row">
 		<div class="col-xs-4 col-xs-offset-4">
 			<div style="height: 330px;" class="well siviWell1">
-				<div class="form-group">
-					<label for="racun">Broj racuna:</label> <input type="text"
-						class="form-control" id="racun" />
-				</div>
+				
 				<div class="form-group">
 					<label for="datum">Datum:</label> <input type="date"
-						class="form-control" id="datum" />
+						class="form-control" id="datum" ng-model="zahtev.datum"/>
 				</div>
 				<div class="form-group">
 					<label for="rbr">Redni broj preseka:</label> <input type="number"
-						min="1" class="form-control" id="rbr" />
+						min="1" class="form-control" id="rbr" ng-model="zahtev.rbrPreseka"/>
 				</div>
-				<a href="" class="btn zutoDugme pull-right">Posalji zahtev</a>
+				<a href="" class="btn zutoDugme pull-right" ng-click="posaljiZahtev(zahtev)">Posalji zahtev</a>
 			</div>
 		</div>
 

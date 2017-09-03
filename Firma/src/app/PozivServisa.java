@@ -21,6 +21,8 @@ import com.marklogic.client.eval.ServerEvaluationCall;
 import banka.Banka;
 import generisani.BankaServis;
 import generisani.Nalog;
+import generisani.Presek;
+import generisani.ZahtevZaIzvod;
 
 
 
@@ -63,7 +65,7 @@ public class PozivServisa {
 		}
 		
 		try {
-			wsdlMojaBanka=new URL("http://SarvanLaptop:8180/Banka/BankaServis?wsdl");//new URL(StartApp.getWsdl(bankaDuznika.getPort()));
+			wsdlMojaBanka=new URL(StartApp.getWsdl(bankaDuznika.getPort()));
 			System.out.println("port: "+bankaDuznika.getPort());
 			//WSDLTudjaBanka=new URL(StartApp.getWsdl(bankaPoverioca.getPort()));
 		} catch (MalformedURLException e) {
@@ -79,6 +81,41 @@ public class PozivServisa {
                 .getPort(portName, BankaServis.class);
         inter.obradiNalog(nalog);
 		
+	}
+	
+	public static Presek posaljiZahtev(ZahtevZaIzvod zahtev){
+		String oznakaMojeBanke=zahtev.getBrojRacuna().substring(0, 3);
+		String upitBanka = "for $x in doc('/content/banka.xml')/banke/banka where $x/oznakaBanke='"
+				+oznakaMojeBanke + "' return $x";
+		
+		String odgBanka=posaljiUpit(upitBanka);
+		Banka mojaBanka=null;
+		
+		try {
+			mojaBanka = unmarshaluj(Banka.class, new StreamSource(
+					new StringReader(odgBanka)));
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		
+		
+		URL wsdlMojaBank=null;
+		
+		try {
+			
+			wsdlMojaBank=new URL(StartApp.getWsdl(mojaBanka.getPort()));
+		} catch (MalformedURLException e) {
+		
+			e.printStackTrace();
+		}
+		
+		Service service = Service.create(wsdlMojaBank, serviceName);
+        BankaServis inter = service
+                .getPort(portName, BankaServis.class);
+        Presek presek=inter.obradiZahtevZaIzvod(zahtev);
+		return presek;
 	}
 	
 	public static String posaljiUpit(String upit) {
