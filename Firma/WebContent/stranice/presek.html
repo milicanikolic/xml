@@ -1,0 +1,144 @@
+<div ng-controller="zahtevCtrl" ng-init="init2()">
+<table
+					style="background-color: #696969; color: white; border-color: black;"
+					class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Broj racuna</th>
+							<th>Datum</th>
+							<th>Broj preseka</th>
+							<th>Prethodno stanje</th>
+							<th>Br. promena u korist</th>
+							<th>Ukupno u korist</th>
+							<th>Br. promena na teret</th>
+							<th>Ukupno na teret</th>
+							<th>Novo stanje</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><input class="form-control input-sm" type="text"
+								readonly="readonly" value="{{presek.zaglavljePreseka.brojRacuna}}" /></td>
+							<td><input class="form-control input-sm" type="text"
+								readonly="readonly" value="{{presek.zaglavljePreseka.datumNaloga}}" /></td>
+							<td><input class="form-control input-sm" type="text"
+								readonly="readonly" value="{{presek.zaglavljePreseka.brojPreseka}}" /></td>
+							<td><input class="form-control input-sm" type="text"
+								readonly="readonly" value="{{presek.zaglavljePreseka.prethodnoStanje}}" /></td>
+							<td><input class="form-control input-sm" type="text"
+								readonly="readonly" value="{{presek.zaglavljePreseka.brPromenaUKorist}}" /></td>
+							<td><input class="form-control input-sm" type="text"
+								readonly="readonly" value="{{presek.zaglavljePreseka.ukupnoUKorist}}" /></td>
+							<td><input class="form-control input-sm" type="text"
+								readonly="readonly" value="{{presek.zaglavljePreseka.brPromenaNaTeret}}" /></td>
+							<td><input class="form-control input-sm" type="text"
+								readonly="readonly" value="{{presek.zaglavljePreseka.ukupnoNaTeret}}" /></td>
+							<td><input class="form-control input-sm" type="text"
+								readonly="readonly" value="{{presek.zaglavljePreseka.novoStanje}}" /></td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="row">
+					<table class="table">
+						<tr>
+							<td></td>
+						</tr>
+					</table>
+				</div>
+				
+				<div ng-repeat="stavka in presek.stavkaPreseka">
+				
+				<div class="row">
+					<div class="col-xs-4 col-xs-offset-5">
+						<h2>
+							<b>Stavka preseka</b>
+						</h2>
+					</div>
+				</div>
+				&nbsp;
+				<div class="row">
+					<div class="col-xs-5">
+						<table class="table">
+							<tr>
+								<td>Duznik:</td>
+								<td><input type="text" readonly="readonly"
+									class="form-control input-sm"
+									value="{{stavka.duznik}}" /></td>
+							</tr>
+							<tr>
+								<td>Svrha placanja:</td>
+								<td><input type="text" readonly="readonly"
+									class="form-control input-sm"
+									value="{{stavka.svrhaPlacanja}}" /></td>
+							</tr>
+							<tr>
+								<td>Primalac:</td>
+								<td><input type="text" readonly="readonly"
+									class="form-control input-sm"
+									value="{{stavka.primalac}}" /></td>
+							</tr>
+							<tr>
+								<td>Datum naloga:</td>
+								<td><input type="text" readonly="readonly"
+									class="form-control input-sm"
+									value="{{stavka.datumNaloga | date:'dd-MM-yyyy'}}" /></td>
+							</tr>
+							<tr>
+								<td>Datum valute:</td>
+								<td><input type="text" readonly="readonly"
+									class="form-control input-sm"
+									value="{{stavka.datumValute | date:'dd-MM-yyyy'}}" /></td>
+							</tr>
+							<tr>
+								<td>Racun duznika:</td>
+								<td><input type="text" readonly="readonly"
+									class="form-control input-sm"
+									value="{{stavka.racunDuznika}}" /></td>
+							</tr>
+						</table>
+					</div>
+					<div class="col-xs-5 col-xs-offset-1">
+						<table class="table">
+							<tr>
+								<td>Model zaduzenja:</td>
+								<td><input type="text" readonly="readonly"
+									class="form-control input-sm"
+									value="{{stavka.modelZaduzenja}}" /></td>
+							</tr>
+							<tr>
+								<td>Poziv na broj zaduzenja:</td>
+								<td><input type="text" readonly="readonly"
+									class="form-control input-sm"
+									value="{{stavka.pozivNaBrZaduzenja}}" /></td>
+							</tr>
+							<tr>
+								<td>Racun primaoca:</td>
+								<td><input type="text" readonly="readonly"
+									class="form-control input-sm"
+									value="{{stavka.racunPrimaoca}}" /></td>
+							</tr>
+							<tr>
+								<td>Model odobrenja:</td>
+								<td><input type="text" readonly="readonly"
+									class="form-control input-sm"
+									value="{{stavka.modelOdobrenja}}" /></td>
+							</tr>
+							<tr>
+								<td>Poziv na br. odobrenja:</td>
+								<td><input type="text" readonly="readonly"
+									class="form-control input-sm"
+									value="{{stavka.pozivNaBrOdobrenja}}" /></td>
+							</tr>
+							<tr>
+								<td>Iznos:</td>
+								<td><input type="text" readonly="readonly"
+									class="form-control input-sm"
+									value="{{stavka.iznos}}" /></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				</div>
+				
+				
+</div>
