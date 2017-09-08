@@ -1,8 +1,11 @@
 package faktura;
 
+import java.awt.Frame;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.InputStream;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.io.OutputStream;
 import java.io.StringReader;
 import java.util.ArrayList;
@@ -10,6 +13,7 @@ import java.util.List;
 
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
+import javax.swing.JFileChooser;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -86,12 +90,39 @@ public class FakturaCtrl {
 		
 		System.out.println("odgovor je " +odgovor);
 		
+		String kon="<?xml version='1.0' encoding='UTF-8' standalone='yes'?>"+odgovor;
+		String kon1 = kon.replace(" xmlns=\"http://ftn.uns.ac.rs/faktura\"","");
+		
+		BufferedWriter writer = null;
+		try
+		{
+		    writer = new BufferedWriter( new FileWriter( new File(System.getProperty("jboss.server.data.dir") , "faktura.xml")));
+		    writer.write( kon1);
+
+		}
+		catch ( IOException e)
+		{
+		}
+		finally
+		{
+		    try
+		    {
+		        if ( writer != null)
+		        writer.close( );
+		    }
+		    catch ( IOException e)
+		    {
+		    }
+		}
+		
+		
+		
 	
 		TransformerFactory tff = TransformerFactory.newInstance();
 		try {
 			Transformer tf = tff.newTransformer(new StreamSource(new File(System.getProperty("jboss.server.data.dir") , "faktura.xslt")));
-			StreamSource ss = new StreamSource(new StringReader(odgovor));
-			StreamResult sr = new StreamResult(new File(System.getProperty("jboss.server.config.dir")+"/faktura.html"));
+			StreamSource ss = new StreamSource(new File(System.getProperty("jboss.server.data.dir"), "faktura.xml"));
+			StreamResult sr = new StreamResult(new File(System.getProperty("jboss.server.data.dir"), "faktura.html"));
 			tf.transform(ss, sr);
 			
 			
@@ -113,6 +144,9 @@ public class FakturaCtrl {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
+		
+		
 		
 		
 

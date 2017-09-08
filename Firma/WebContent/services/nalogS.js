@@ -11,6 +11,13 @@ app.factory('nalogS', [ '$http', function($http, $scope) {
 		
 		return $http.post('/Firma/rest/nalog', nalog);
 	}
+	
+	
+	nalogService.uzmiDobavljaca = function(pib) {
+		return $http.get('/Firma/rest/nalog/' + pib);
+	
+		
+	}
 
 	return nalogService;
 

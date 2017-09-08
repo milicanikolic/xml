@@ -99,7 +99,7 @@
 														<td>Uplata na racun:</td>
 														<td><input type="text" readonly="readonly"
 															class="form-control input-sm"
-															value="{{faktura.zaglavljeFakture.brojRacuna}}" /></td>
+															value="{{faktura.zaglavljeFakture.uplataNaRacun}}" /></td>
 													</tr>
 												</table>
 											</div>
@@ -172,7 +172,7 @@
 						</div>
 						<div class="modal-footer">
 							<button type="button" class="btn zutoDugme" data-dismiss="modal"
-								ng-click="plati(faktura)">Plati</button>
+								ng-click="uzmiDobavljaca(faktura.zaglavljeFakture.pibDobavljac);plati(faktura) ">Plati</button>
 						</div>
 					</div>
 

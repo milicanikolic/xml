@@ -2,7 +2,7 @@ app.controller('nalogCtrl', function($scope, $window, $rootScope, nalogS) {
 
 	$scope.init = function() {
 		$scope.ulogovanaFirma = $rootScope.firmaUlogovana;
-		$scope.jednaFirma = $rootScope.jednaFirma;
+	//	$scope.jednaFirma = $rootScope.jednaFirma;
 		$scope.uzmiSveFakture();
 		$("#myModal2").hide();
 
@@ -49,6 +49,7 @@ app.controller('nalogCtrl', function($scope, $window, $rootScope, nalogS) {
 		$("#myModal2").show();
 		$("#myModal2").fadeTo(2000, 500).slideUp(500, function() {
 			$("#myModal2").slideUp(500);
+			$window.location.href = '#/pocetna';
 		});
 
 	}
@@ -56,15 +57,22 @@ app.controller('nalogCtrl', function($scope, $window, $rootScope, nalogS) {
 	$scope.posaljiNalog = function(nalog) {
 		nalog.duznik = $scope.ulogovanaFirma.username;
 		console.log("duznik nalog " + nalog.duznik);
-		nalog.primalac = $scope.jednaFirma.username;
+		console.log($scope.dobavljacUsername);
+		nalog.primalac = $scope.dobavljacUsername
 		console.log("prim nalog " + nalog.primalac);
 		console.log(nalog);
 		nalogS.posaljiNalog(nalog).then(function(response) {
-			$scope.obavestenje().then(function() {
-				$window.location.href = '#/pocetna';
-			});
+			$scope.obavestenje();
 		})
 
+	}
+	
+	$scope.uzmiDobavljaca = function(pib) {
+		nalogS.uzmiDobavljaca(pib)
+		.then(function(response) {
+			$scope.dobavljacUsername = response.data;
+			console.log($scope.dobavljacUsername);
+		})
 	}
 
 })
